@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, jsonify
+from food_db import food_db
+
 app = Flask(__name__)
+app.register_blueprint(food_db, url_prefix="/food_db")
 
 import certifi
 ca = certifi.where()
