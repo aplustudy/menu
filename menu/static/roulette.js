@@ -4,7 +4,7 @@ const ctx = $c.getContext(`2d`);
 function foodGet(){
   $.ajax({
       type: "GET",
-      url: "/fooddb",
+      url: "/food_db",
       data: {},
       success: function (response) {
         const food = response['foods']
@@ -37,7 +37,7 @@ function foodGet(){
 const foodKorea = () => {
     $.ajax({
         type: "GET",
-        url: "/fooddb",
+        url: "/food_db",
         data: {},
         success: function (response) {
           const food = response['foods']
@@ -52,7 +52,7 @@ const foodKorea = () => {
 }
 
 const foodChina = () => {
-  
+
 }
 
 
