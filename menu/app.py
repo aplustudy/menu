@@ -20,6 +20,9 @@ def main():
 def roulette():			
     return render_template("roulette.html")
 
+@app.route('/user', methods=['GET'])
+def user():
+    return render_template("login.html")
 
 @app.route('/user', methods=['POST'])
 def test_post():
