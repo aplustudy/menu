@@ -1,9 +1,64 @@
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
 
+function foodGet(){
+  $.ajax({
+      type: "GET",
+      url: "/fooddb",
+      data: {},
+      success: function (response) {
+        const food = response['foods']
+        const korea = []
+        const china = []
+        const japen = []
+        const american = []
+        for(let i = 0; i < food.length; i++){
+          if(food[i].category === '한식'){
+            korea.push(food[i].name)
+          }
+          if(food[i].category === '중식'){
+            china.push(food[i].name)
+          }
+          if(food[i].category === '양식'){
+            american.push(food[i].name)
+          }
+          if(food[i].category === '일식'){
+            japen.push(food[i].name)
+          }
+        }
+        console.log(korea);
+        console.log(china);
+        console.log(american);
+        console.log(japen);
+      }
+  });
+}
+
+const foodKorea = () => {
+    $.ajax({
+        type: "GET",
+        url: "/fooddb",
+        data: {},
+        success: function (response) {
+          const food = response['foods']
+          const korea = []
+          for(let i = 0; i < food.length; i++){
+            if(food[i].category === '한식'){
+              korea.push(food[i].name)
+            }
+          }
+          console.log(korea);
+         }})
+}
+
+const foodChina = () => {
+  
+}
+
+
 
 const product = [
-  "떡볶이", '돈가스', "초밥", "피자", "냉면", "치킨", '족발', "피자", "삼겹살",
+  "떡볶이", '돈가스', "초밥", "피자", "냉면", "치킨", '족발', "피자", "삼겹살"
 ];
 
 const colors = ["#dc0936", "#e6471d", "#f7a416", "#efe61f ", "#60b236", "#209b6c", "#169ed8", "#3f297e", "#87207b", "#be107f", "#e7167b"];
