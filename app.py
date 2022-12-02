@@ -101,5 +101,6 @@ def api_valid():
         # 로그인 정보가 없으면 에러가 납니다!
         return jsonify({'result': 'fail', 'msg': '로그인 정보가 존재하지 않습니다.'})
 
+
 if __name__ == "__main__": 	
     app.run(debug=True)
