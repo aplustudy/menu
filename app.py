@@ -9,12 +9,14 @@ from food_db import food_db
 from ladder import ladder
 from roulette import roulette
 from test import test
+from board import board
 
 app = Flask(__name__)
 app.register_blueprint(food_db, url_prefix="/food_db")
 app.register_blueprint(ladder, url_prefix="/ladder")
 app.register_blueprint(roulette, url_prefix="/roulette")
 app.register_blueprint(test, url_prefix="/test")
+app.register_blueprint(board, url_prefix="/board")
 
 ca = certifi.where()
 client = MongoClient("mongodb+srv://bongdroid:qhdrbs88!@cluster0.hecgbmx.mongodb.net/Cluster0?retryWrites=true&w=majority", tlsCAFile = ca)
