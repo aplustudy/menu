@@ -20,7 +20,7 @@ def board_get():
 
 @board.route("/post", methods=["POST"])
 def board_post():
-    title_receive = request.form['text_give']
+    title_receive = request.form['title_give']
     text_receive = request.form['text_give']
     id_receive = request.form['id_give']
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
@@ -35,7 +35,7 @@ def board_update():
     index_receive = int(request.form['index_give'])
     title_receive = request.form['title_give']
     text_receive = request.form['text_give']
-    db.board.update_one({'index' : index_receive}, {'$set' : {'text' : text_receive, 'title' : title_receive}})
+    db.board.update_one({'index' : index_receive}, {'$set' : {'title' : title_receive, 'text' : text_receive}})
     return jsonify({'msg' : '수정 완료!'})
     
 @board.route("/delete", methods=["POST"]) 		
