@@ -10,3 +10,28 @@
     border: 2px solid black;
     border-radius: 20px;
 }
+.main_ladder_btn {
+    background: deepskyblue;
+    margin-top: 1rem;
+    padding: .8rem 1.8rem;
+    border: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.p_tag {
+    display: flex;
+    justify-content: center;
+}
+.ladder_btn {
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid black;
+    font-size: 14px;
+    height: 30px;
+    margin-left:auto;
+}
+.ladder_p_tag {
+    margin: 0 auto;
+}
