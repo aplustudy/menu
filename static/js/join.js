@@ -1,4 +1,4 @@
-const join = () => {
+const joinCall = () => {
     $.ajax({
         type: "POST",
         url: "/api/join",
