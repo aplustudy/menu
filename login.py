@@ -14,7 +14,7 @@ db = client.users
 SECRET_KEY = 'omemu4$'
 
 @login.route('/')
-def logincall():
+def loginCall():
     return render_template('login.html')
 
 # 로그인

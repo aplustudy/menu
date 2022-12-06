@@ -19,7 +19,7 @@ SECRET_KEY = 'omemu4$'
 #     return render_template('join.html')
 
 @join.route('/')
-def joincall():
+def joinCall():
     return render_template('join.html')
 
 # 회원가입
