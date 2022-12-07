@@ -98,6 +98,7 @@ class NavBar extends HTMLElement {
                   </li>
                 </ul>
               </div>
+              <div id="myname2">로그인을 해주세요.</div>
             </div>
           </div>
         </nav>

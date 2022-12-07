@@ -1,7 +1,7 @@
 const joinCall = () => {
     $.ajax({
         type: "POST",
-        url: "/api/join",
+        url: "/join",
         data: {
             email_give: $('#email').val(),
             password_give: $('#password').val(),
