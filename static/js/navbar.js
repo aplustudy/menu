@@ -1,3 +1,5 @@
+const userId = ''
+
 class NavBar extends HTMLElement {
 
     // 생성자 함수
