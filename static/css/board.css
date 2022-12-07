@@ -1,0 +1,142 @@
+.main_board{
+    margin-top: 100px;
+    text-align: center;
+}
+.board_index{
+    
+}
+
+
+.d-none{
+
+    display: none;
+
+}
+
+ 
+
+.board{
+
+    width: 500px;
+
+    height: 100%;
+
+    margin: auto;
+
+}
+
+ 
+
+.table{
+
+    font-size :20px;
+
+    border-collapse: collapse;
+
+    width: 1200px;
+
+    margin-top:200px;
+
+    border: 1px solid gray;    
+
+    text-align: center;
+
+    
+
+}
+
+.thead td {
+
+    background: #B2B2B2;
+
+}
+
+ 
+
+td{
+
+    height: 40px;
+
+    border-bottom:1px solid black;
+
+}
+
+ 
+
+tr td:nth-child(2){
+
+    width: 300px;
+
+}
+
+ 
+
+/* ********페이징******** */
+
+.page-nation li{ 
+
+    list-style: none;
+
+} 
+
+ 
+
+.page-wrap {
+
+    text-align:center;
+
+    font-size:0;
+
+ }
+
+.page-nation  {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top:20px;
+
+}
+
+ 
+
+.page-nation a {
+
+    display:block;
+
+    margin:0 3px;
+
+    float:left;
+
+    border:1px solid #e6e6e6;
+
+    width:28px;
+
+    height:28px;
+
+    line-height:28px;
+
+    text-align:center;
+
+    background-color:#fff;
+
+    font-size:13px;
+
+    color:black;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+}
+
+.page-nation a:hover{
+
+    background-color:gray;
+
+    color:white;
+
+}
