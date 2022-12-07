@@ -5,7 +5,7 @@ import jwt
 import datetime
 import hashlib
 
-login = Blueprint("login", __name__, template_folder="templates")
+bp = Blueprint("login", __name__, template_folder="templates")
 
 ca = certifi.where()
 client = MongoClient("mongodb+srv://bongdroid:qhdrbs88!@cluster0.hecgbmx.mongodb.net/Cluster0?retryWrites=true&w=majority", tlsCAFile = ca)
@@ -13,12 +13,12 @@ db = client.users
 
 SECRET_KEY = 'omemu4$'
 
-@login.route('/')
+@bp.route('/')
 def loginCall():
     return render_template('login.html')
 
 # 로그인
-@login.route('/', methods=['POST'])
+@bp.route('/', methods=['POST'])
 def api_login():
     email_receive = request.form['email_give']
     password_receive = request.form['password_give']
@@ -46,7 +46,7 @@ def api_login():
 
 
 # 보안: 로그인한 사용자만 통과할 수 있는 API
-@login.route('/isAuth', methods=['GET'])
+@bp.route('/isAuth', methods=['GET'])
 def api_valid():
     token_receive = request.cookies.get('mytoken')
     try:

@@ -5,7 +5,7 @@ import jwt
 import datetime
 import hashlib
 
-join = Blueprint("join", __name__, template_folder="templates")
+bp = Blueprint("join", __name__, template_folder="templates")
 
 ca = certifi.where()
 client = MongoClient("mongodb+srv://bongdroid:qhdrbs88!@cluster0.hecgbmx.mongodb.net/Cluster0?retryWrites=true&w=majority", tlsCAFile = ca)
@@ -13,17 +13,16 @@ db = client.users
 
 SECRET_KEY = 'omemu4$'
 
-
 # @join.route('/')
 # def main():
 #     return render_template('join.html')
 
-@join.route('/')
+@bp.route('/')
 def joinCall():
     return render_template('join.html')
 
 # 회원가입
-@join.route('/', methods=['POST'])
+@bp.route('/', methods=['POST'])
 def api_register():
     email_receive = request.form['email_give']
     password_receive = request.form['password_give']
