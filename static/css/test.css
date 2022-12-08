@@ -1,0 +1,249 @@
+/* 전체 */
+*{
+    box-sizing: border-box;
+}
+body {
+    background-color: #ffffff;
+    color: black;
+    font-family: 'Gothic A1', sans-serif;}
+article {
+    display: flex;
+    flex-direction: column;
+}
+.copyright-text {
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    color: #7c7c7c;
+}
+
+/* 시작화면 */
+.ad-banner {
+    width: 320px;
+    margin: 0 auto;
+}
+.question {
+    display: none;
+}
+.startImg {
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+.countt {
+    text-align: center;
+    font-style: normal;
+    font-size: 13px;
+    color: gray;
+    margin-top: 3px;
+    flex-direction: row;
+
+}
+.startMes {
+    font-size: 16px;
+    color: gray;
+}
+.userCount {
+    text-align: center;
+    font-style: normal;
+    font-size: 14px;
+    color: black;
+    margin-top: 10px;
+    flex-direction: row;
+}
+.downloadimg {
+    text-align: center;
+}
+.outlink{
+    border: 2px solid #1f1f1f;
+    border-radius: 10px;
+    width: 150px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.loading {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    font-size: 16px;
+}
+.spin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-title {
+    font-size: 14px;
+    color: #7c7c7c;
+}
+.sub-title {
+    font-size: 24px;
+    font-weight: 100;
+    color: #ebebeb;
+}
+.updown-slash {
+    width: 166px;
+    margin: 0 auto;
+}
+.start-cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btn-start {
+    font-size: 16px;
+    color: black;
+    background-color: #d2a6e8;
+    width: 95%;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 10px;
+    max-width: 400px;
+    border-color: #d2a6e8;
+}
+.btn-start:visited, .btn-start:hover, .btn-start:active {
+    font-size: 16px;
+    color: black;
+    background-color: #eeeeee;
+}
+.btn-start:active, .btn-start:focus {
+    background-color: #fff !important;
+    font-size: 16px;
+    color:#ffffff;
+}
+.btn {
+    width: 120px;
+    height: 150px;
+}
+.start{
+    /* display: none; */
+}
+
+/* 문제 화면 */
+.cate_qus {
+    display: none;
+}
+.cate_question {
+    margin-top: 50px;
+}
+.cate_button {
+    display: flex;
+    justify-content: center;
+}
+.cate_btn{
+    margin-top: 10px;
+    padding: 5px;
+    width: 50px;
+    margin-left: 10px;
+    border: #ebebeb;
+    background-color: black;
+    color: white;
+}
+
+.btn-answer, .btn-answer:visited, .btn-answer:hover, .btn-answer:focus {
+    background-color: #fff !important;
+    border: 2px solid #1f1f1f !important;
+    border-color: black;
+    width: 288px;
+    margin: 0 auto;
+    font-size: 13px;
+    color: black;
+}
+.btn-answer:hover {
+    background-color: #fff;
+    border:#fff;
+    width: 288px;
+    margin: 0 auto;
+    font-size: 13px;
+    color: #1f1f1f;
+}
+.progress-bar {
+    background-color: green;
+    width: 100%;
+}
+.progress {
+    background-color: #525764;
+}
+.likelion-logo {
+    width: 96px;
+    margin: 0 auto;
+}
+.slash-element {
+    width: 24px;
+    margin: 0 auto;
+}
+.question-content {
+    font-size: 16px;
+    color: black;
+    font-weight: 600;
+}
+.qus{
+    width: 95%;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 400px;
+}
+.rectangle {
+    width: 288px;
+    height: 8px;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+.mid-rectangle {
+    width: 288px;
+    height: 1px;
+    background-color: #383a43;
+    margin: 0 auto;
+}
+
+/* 결과 화면 */
+.result-message {
+    color: #ff9300;
+    margin: 0 auto;
+    font-size: 24px;
+    font-weight: 100;
+}
+.result-animal {
+    font-size: 18px;
+    font-weight: 100;
+    color: #ebebeb;
+}
+.result-explain {
+    font-size: 13px;
+    font-weight: normal;
+    color: #ff9300;
+}
+.share-message {
+    margin: 0 auto;
+    color:#ffffff;
+    font-size: 24px;
+    font-weight: 100;
+}
+.result {
+    display: none;
+}
+#img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    max-width: 400px;
+    max-height: 460px;
+}
+.share {
+    margin: 0 auto;
+}
+.qnum {
+    text-align: center; 
+    margin-top: 20px;
+}
+.intro-footer {
+    margin: 3rem auto;
+    color: #cecfd0;
+    font-size: 14px;
+}

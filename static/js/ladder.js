@@ -1,6 +1,6 @@
-const fooddata = []
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
+const fooddata = []
 
 const randomValue = (array) => {
     if(array.length === 0){
@@ -13,6 +13,8 @@ const randomValue = (array) => {
 }
 
 const makeRl = () => {
+    product = [...fooddata]
+    newMake()
     $("#ladder_main").toggle()
     $("#makeRl").toggle()
 }
@@ -26,7 +28,7 @@ const addTextbox = () => {
         alert("메뉴를 입력해주셔야죠..")
     }
     else {
-        newP.innerHTML = "<p class='ladder_p_tag'>" + foodValue + "</p><input type='button' class='ladder_btn' value='삭제' onclick='remove(this)'>";
+        newP.innerHTML = "<p class='ladder_p_tag'>" + foodValue + "</p><input id='"+foodValue+"' type='button' class='ladder_btn' value='삭제' onclick='remove(this)'>";
         box.appendChild(newP);
         fooddata.push(foodValue);
         parent.document.getElementById('want_food').value='';
@@ -34,6 +36,12 @@ const addTextbox = () => {
 }
 const remove = (obj) => {
     document.getElementById('ladder').removeChild(obj.parentNode);
+    for(let i = 0; i < fooddata.length; i++){
+      if(fooddata[i] === obj.id){
+        fooddata.splice(i, 1);
+        return
+      }
+    }
 }
 
 const randomFood = () => {
