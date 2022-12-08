@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/board.css">
+    <title>글수정</title>
+</head>
+<body>
+    <div class="card">
+        <div class="card-header4"><a href="/board"><h1>게시판</h1></a></div>
+        <div class="card-edit">
+            <div class="myinfo">
+                이름<input type="text" placeholder="이름을 입력하세요." value="김이름">
+                비밀번호<input type="password" placeholder="비밀번호를 입력하세요." value="1234">
+            </div>
+            <div class="title">
+                제목<input type="text" placeholder="제목을 입력하세요." value="안녕하세요. 이것은 게시판 제목입니다.">
+            </div>
+            <div class="msg">
+                내용<textarea placeholder="내용을 입력하세요.">
+동해물과 백두산이 마르고 닳도록
+하느님이 보우하사 우리나라 만세
+무궁화 삼천리 화려 강산
+대한 사람 대한으로 길이 보전하세
+                </textarea>
+                <input type="file">
+            </div>
+        </div>
+
+        <div class="btn-edit">
+            <a href="/board">작성</a>
+        </div>
+    </div>
+</body>
+</html>
