@@ -13,6 +13,10 @@ board = Blueprint("board", __name__, template_folder="templates")
 def board_main():
    return render_template('board.html')
 
+@board.route('/write')
+def board_write():
+   return render_template('write.html')
+
 @board.route("/get", methods=["GET"])
 def board_get():
     post_list = list(db.board.find({}, {'_id': False}))
