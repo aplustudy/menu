@@ -1,37 +1,40 @@
-from flask import Flask, render_template, request, jsonify
-from pymongo import MongoClient
-import certifi
-import jwt
-import datetime
-import hashlib
+from flask import Flask, render_template, Blueprint
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
+import config
+import os
+import sys
 
-from food_db import food_db
-from ladder import ladder
-from roulette import roulette
-from test import test
-from board import board
-from login import login
-from join import join
+# views를 import하기 위해 sys에 현재 폴더의 절대 경로 추가 : https://redfox.tistory.com/80 https://redfox.tistory.com/81
+dir = os.path.realpath(__file__)
+dir = os.path.abspath(os.path.join(dir, os.pardir))
+sys.path.append(dir)
 
-app = Flask(__name__)
-app.register_blueprint(food_db, url_prefix="/food_db")
-app.register_blueprint(ladder, url_prefix="/ladder")
-app.register_blueprint(roulette, url_prefix="/roulette")
-app.register_blueprint(test, url_prefix="/test")
-app.register_blueprint(board, url_prefix="/board")
-app.register_blueprint(login, url_prefix="/login")
-app.register_blueprint(join, url_prefix="/join")
+# DB 준비
+db = SQLAlchemy()
+migrate = Migrate()
 
-ca = certifi.where()
-client = MongoClient("mongodb+srv://bongdroid:qhdrbs88!@cluster0.hecgbmx.mongodb.net/Cluster0?retryWrites=true&w=majority", tlsCAFile = ca)
-db = client.users
+def create_app():
+    app = Flask(__name__)
+    app.config.from_object(config)
 
-SECRET_KEY = 'omemu4$'
+    db.init_app(app)
+    migrate.init_app(app, db)
 
-@app.route("/") 		
-def main():			
-    return render_template("index.html")
+    # ---------- Blueprint ----------
+    from views import food_db, ladder, roulette, test, login, join, board, board_comment
+    app.register_blueprint(food_db.bp, url_prefix="/food_db")
+    app.register_blueprint(ladder.bp, url_prefix="/ladder")
+    app.register_blueprint(roulette.bp, url_prefix="/roulette")
+    app.register_blueprint(test.bp, url_prefix="/test")
+    app.register_blueprint(login.bp, url_prefix="/login")
+    app.register_blueprint(join.bp, url_prefix="/join")
+    app.register_blueprint(board.bp, url_prefix="/board")
+    app.register_blueprint(board_comment.bp, url_prefix="/board_comment")
+    # ---------- Blueprint ----------
 
+    @app.route("/") 		
+    def main():			
+        return render_template("index.html")
 
-if __name__ == "__main__": 	
-    app.run(debug=True)
+    return app
