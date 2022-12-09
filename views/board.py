@@ -8,9 +8,24 @@ from werkzeug.utils import redirect
 bp = Blueprint("board", __name__, template_folder="templates")
 
 @bp.route("/") 		
-def board_main():	
-    board_list = Board.query.order_by(Board.datetime.desc())
-    return render_template('/board_list.html', board_list=board_list)
+def _list():	
+    page = request.args.get('page', type=int, default=1)  # 페이지
+    kw = request.args.get('kw', type=str, default='')
+    board_list = Board.query.order_by(Board.datetime.desc()) 
+    if kw:
+        search = '%%{}%%'.format(kw)
+        sub_query = db.session.query(Comment.post_index, Comment.content, Comment.user).subquery()
+        board_list = board_list \
+            .outerjoin(sub_query, sub_query.c.post_index == Board.index) \
+            .filter(Board.title.ilike(search) |  # 질문제목
+                    Board.content.ilike(search) |  # 질문내용
+                    Board.user.ilike(search) |  # 질문작성자
+                    sub_query.c.content.ilike(search) |  # 답변내용
+                    sub_query.c.user.ilike(search)  # 답변작성자
+                    ) \
+            .distinct()
+    board_list = board_list.paginate(page=page, per_page=10)
+    return render_template('board_list.html', board_list = board_list, page=page, kw=kw)
 
 @bp.route("/<int:board_index>/") 		
 def detail(board_index):	

@@ -5,6 +5,7 @@ class Board(db.Model): # 무조건 db.Model 써야함
     title = db.Column(db.String(50), nullable=False)
     content = db.Column(db.Text(), nullable=False)
     datetime = db.Column(db.DateTime(), nullable=False)
+    user = db.Column(db.String(50), nullable=False)
     
 class Comment(db.Model):
     index = db.Column(db.Integer, primary_key=True)
@@ -12,3 +13,4 @@ class Comment(db.Model):
     post = db.relationship('Board', backref=db.backref('comment_set'))
     content = db.Column(db.Text(), nullable=False)
     datetime = db.Column(db.DateTime(), nullable=False)
+    user = db.Column(db.String(50), nullable=False)
