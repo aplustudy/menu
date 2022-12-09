@@ -203,21 +203,11 @@ article {
 }
 
 /* 결과 화면 */
-.result-message {
-    color: #ff9300;
-    margin: 0 auto;
-    font-size: 24px;
-    font-weight: 100;
-}
-.result-animal {
-    font-size: 18px;
-    font-weight: 100;
-    color: #ebebeb;
-}
-.result-explain {
-    font-size: 13px;
-    font-weight: normal;
-    color: #ff9300;
+
+
+.menu_result{
+    margin-top: 100px;
+    text-align: center;
 }
 .share-message {
     margin: 0 auto;

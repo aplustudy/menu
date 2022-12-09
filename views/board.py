@@ -27,6 +27,13 @@ def _list():
     board_list = board_list.paginate(page=page, per_page=10)
     return render_template('board_list.html', board_list = board_list, page=page, kw=kw)
 
+@bp.errorhandler(404)
+def page_not_found(error):
+    page = request.args.get('page', type=int, default=1)
+    board_list = Board.query.order_by(Board.datetime.desc()) 
+    board_list = board_list.paginate(page=page, per_page=10)
+    return render_template('board_list.html', board_list = board_list, page=page, kw='')
+
 @bp.route("/<int:board_index>/") 		
 def detail(board_index):	
     form = BoardForm()
@@ -37,9 +44,9 @@ def detail(board_index):
 def create():	
     form = BoardForm()
     if request.method == "POST" and form.validate_on_submit():
-        post = Board(title = form.title.data, content = form.content.data, datetime = datetime.now())
+        post = Board(title = form.title.data, content = form.content.data, datetime = datetime.now(), user = 'temp')
         db.session.add(post)
         db.session.commit()
-        return redirect(url_for('board.board_main'))
+        return redirect(url_for('board._list'))
     return render_template('/board_form.html', form=form)
     # 질문 등록하기 버튼을 누르는 것은 GET, 질문 등록하는 것은 POST
