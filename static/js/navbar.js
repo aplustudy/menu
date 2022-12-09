@@ -1,3 +1,26 @@
+// 로그아웃 추가_토큰삭제
+function logout() {
+  $.removeCookie('mytoken');
+}
+
+// 호출하자마자 불러오기
+$(document).ready(function () {
+  $.ajax({
+      type: "GET",
+      url: "/login/isAuth",
+      data: {},
+      success: function (response) {
+          if (response['result'] == 'success') {
+              let name = response['name']
+              $("#myname2").text(name + "님, 환영합니다!");
+
+          } else {
+              console.log(response['msg'])
+          }
+      }
+  })
+});
+
 const userId = ''
 
 class NavBar extends HTMLElement {
@@ -93,7 +116,7 @@ class NavBar extends HTMLElement {
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="#">내정보 보기</a></li>
                       <li><a class="dropdown-item" href="/login">로그인</a></li>
-                      <li><a class="dropdown-item" href="#">로그아웃</a></li>
+                      <li><a class="dropdown-item" onclick="joinCall()" value="로그아웃" href="/">로그아웃</a></li>
                     </ul>
                   </li>
                 </ul>
