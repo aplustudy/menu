@@ -15,6 +15,13 @@
     <br>
     <br>
     <div class="container my-3">
+
+    <!-- 변수 선언-->
+    {% set ppg = 5 %} <!-- pages per group -->
+    {% set group = (board_list.page-1) // ppg + 1 %}
+    {% set last_page = (board_list.total+9) // 10 %}
+    {% set last_page_group = (last_page-1) // ppg + 1 %}
+
     <!-- 검색 -->    
     <div class="row my-3">
         <div class="col-6">
@@ -29,7 +36,8 @@
             </div>
         </div>
     </div>
-    <!-- 검색 -->
+
+    <!-- 리스트 -->    
     <table class="table">
         <thead>
         <tr class="table-dark">
@@ -40,40 +48,51 @@
         </thead>
         <tbody>
         {% if board_list %}
-        {% for board in board_list.items %}
-        <tr>
-            <td>{{ board.index }}</td>
-            <td>
-                <a href="{{ url_for('board.detail', board_index=board.index) }}">{{ board.title }}</a>                
-                {% if board.comment_set|length > 0 %}
-                <span class="text-secondary small mx-2">[{{ board.comment_set|length }}]</span>
-                {% endif %}
-            </td>
-            <td>{{ board.datetime|datetime }}</td>
-        </tr>
-        {% endfor %}
+            {% for board in board_list.items %}
+                <tr>
+                    <td>{{ board.index }}</td>
+                    <td>
+                        <a href="{{ url_for('board.detail', board_index=board.index) }}">{{ board.title }}</a>                
+                        {% if board.comment_set|length > 0 %}
+                        <span class="text-secondary small mx-2">[{{ board.comment_set|length }}]</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ board.datetime|datetime }}</td>
+                </tr>
+            {% endfor %}
         {% else %}
-        <tr>
-            <td colspan="3">게시글이 하나도 없어요!</td>
-        </tr>
+            <tr>
+                <td colspan="3">게시글이 하나도 없어요!</td>
+            </tr>
         {% endif %}
         </tbody>
     </table>    
+
     <!-- 페이징처리 -->
     <ul class="pagination justify-content-center">
-        <!-- 이전 페이지가 있으면 이전 링크 활성화 -->
-        {% if board_list.has_prev %}
+        <!-- 맨앞 -->
+        {% if board_list.page > ppg %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ board_list.prev_num }}" href="javascript:void(0)">이전</a>
+            <a class="page-link" data-page="{{ 1 }}" href="javascript:void(0)">&lt;&lt;</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">이전</a>
+            <!-- <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">이전</a> -->
+        </li>
+        {% endif %}
+        <!-- 이전 -->
+        {% if board_list.page > ppg %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ board_list.page - ppg }}" href="javascript:void(0)">&lt;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <!-- <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">이전</a> -->
         </li>
         {% endif %}
         <!-- 페이지 번호 -->
-        {% for page_num in board_list.iter_pages() %}
-            {% if page_num %}
+        {% for page_num in range((group-1)*ppg + 1, group*ppg + 1) %}
+            {% if page_num <= last_page %}
                 {% if page_num != board_list.page %}
                 <li class="page-item">
                     <a class="page-link" data-page="{{ page_num }}" href="javascript:void(0)">{{ page_num }}</a>
@@ -85,18 +104,28 @@
                 {% endif %}
             {% else %}
                 <li class="disabled">
-                    <a class="page-link" href="javascript:void(0)">...</a>
+                    <!-- <a class="page-link" href="javascript:void(0)">...</a> -->
                 </li>
             {% endif %}
         {% endfor %}
-        <!-- 다음 페이지가 있으면 다음 링크 활성화 -->
-        {% if board_list.has_next %}
+        <!-- 다음 -->
+        {% if group < last_page_group %}
         <li class="page-item">
-            <a class="page-link" data-page="{{ board_list.next_num }}" href="javascript:void(0)">다음</a>
+            <a class="page-link" data-page="{{ (board_list.page + ppg, last_page)|min }}" href="javascript:void(0)">&gt;</a>
         </li>
         {% else %}
         <li class="page-item disabled">
-            <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">다음</a>
+            <!-- <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">&gt;</a> -->
+        </li>
+        {% endif %}
+        <!-- 맨뒤 -->
+        {% if group < last_page_group %}
+        <li class="page-item">
+            <a class="page-link" data-page="{{ last_page }}" href="javascript:void(0)">&gt;&gt;</a>
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+            <!-- <a class="page-link" tabindex="-1" aria-disabled="true" href="javascript:void(0)">이전</a> -->
         </li>
         {% endif %}
     </ul>
@@ -124,4 +153,5 @@
     </script>
     <a href="{{ url_for('main') }}" class="btn btn-secondary">홈으로</a>
 </div>
+<script src=“https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js” integrity=“sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin=“anonymous”></script>
 </body>
