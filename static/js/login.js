@@ -1,7 +1,7 @@
 function loginCall() {
     $.ajax({
         type: "POST",
-        url: "/login",
+        url: "/login/",
         data: {
             email_give: $('#email').val(),
             password_give: $('#password').val(),
