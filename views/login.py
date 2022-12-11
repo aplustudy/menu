@@ -34,7 +34,7 @@ def api_login():
         # JWT 토큰 생성
         payload = {
             'email': email_receive,
-            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=100)
+            'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=86400)
         }
         token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
@@ -55,7 +55,7 @@ def api_valid():
         # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
         userinfo = db.user.find_one({'email': payload['email']}, {'_id': 0})
         return jsonify({'result': 'success', 'name': userinfo['name']})
-    except jwt.ExpiredSignatureError:
+    except jwt.exceptions.ExpiredSignatureError:
         # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})
     except jwt.exceptions.DecodeError:
