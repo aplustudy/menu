@@ -1,4 +1,5 @@
-// 로그아웃 추가_토큰삭제
+const readyTostart = () => {
+  // 로그아웃 추가_토큰삭제
 function logout() {
   $.removeCookie('mytoken');
 }
@@ -20,6 +21,9 @@ $(document).ready(function () {
       }
   })
 });
+}
+
+
 
 const userId = ''
 
@@ -136,3 +140,4 @@ class NavBar extends HTMLElement {
 
 
 window.customElements.define('main-nav-bar', NavBar);
+readyTostart()
