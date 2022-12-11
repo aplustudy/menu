@@ -14,13 +14,13 @@ $(document).ready(function () {
           if (response['result'] == 'success') {
               let name = response['name']
               $("#myname2").text(name + "님, 환영합니다!");
-
+              
           } else {
               console.log(response['msg'])
           }
       }
   })
-});
+});4
 }
 
 
@@ -118,7 +118,7 @@ class NavBar extends HTMLElement {
                       내정보
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">내정보 보기</a></li>
+                      <li><a class="dropdown-item" href="/user_page">내정보 보기</a></li>
                       <li><a class="dropdown-item" href="/login">로그인</a></li>
                       <li><a class="dropdown-item" onclick="joinCall()" value="로그아웃" href="/">로그아웃</a></li>
                     </ul>
