@@ -34,4 +34,4 @@ def api_member_del():
     if result.deleted_count != 0:
         return jsonify({'result': 'success'})
     else:
-        return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})xs
+        return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
