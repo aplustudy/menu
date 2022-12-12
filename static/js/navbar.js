@@ -1,11 +1,13 @@
 const readyTostart = () => {
   // 로그아웃 추가_토큰삭제
 function logout() {
-  $.removeCookie('mytoken');
+  console.log('logout!')
+  $.removeCookie('mytoken', {path: '/'});
 }
 
 // 호출하자마자 불러오기
-$(document).ready(function () {
+$(document).ready(
+  function () {
   $.ajax({
       type: "GET",
       url: "/login/isAuth",
@@ -13,14 +15,14 @@ $(document).ready(function () {
       success: function (response) {
           if (response['result'] == 'success') {
               let name = response['name']
+              login_name = name
               $("#myname2").text(name + "님, 환영합니다!");
-              
           } else {
               console.log(response['msg'])
           }
       }
   })
-});4
+});
 }
 
 
@@ -120,7 +122,7 @@ class NavBar extends HTMLElement {
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="/user_page">내정보 보기</a></li>
                       <li><a class="dropdown-item" href="/login">로그인</a></li>
-                      <li><a class="dropdown-item" onclick="joinCall()" value="로그아웃" href="/">로그아웃</a></li>
+                      <li><a class="dropdown-item" onclick="logout()" value="로그아웃" href="/">로그아웃</a></li>
                     </ul>
                   </li>
                 </ul>

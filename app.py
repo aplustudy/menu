@@ -36,7 +36,7 @@ def create_app():
     app.jinja_env.filters['datetime'] = format_datetime
 
     # ---------- Blueprint ----------
-    from views import food_db, ladder, roulette, test, login, join, board, board_comment
+    from views import food_db, ladder, roulette, test, login, join, board, board_comment, user_page
     app.register_blueprint(food_db.bp, url_prefix="/food_db")
     app.register_blueprint(ladder.bp, url_prefix="/ladder")
     app.register_blueprint(roulette.bp, url_prefix="/roulette")
@@ -45,6 +45,7 @@ def create_app():
     app.register_blueprint(join.bp, url_prefix="/join")
     app.register_blueprint(board.bp, url_prefix="/board")
     app.register_blueprint(board_comment.bp, url_prefix="/board_comment")
+    app.register_blueprint(user_page.bp, url_prefix="/user_page")
     # ---------- Blueprint ----------
 
     @app.route("/") 		

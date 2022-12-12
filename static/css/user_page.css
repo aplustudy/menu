@@ -1,0 +1,60 @@
+.user_page {
+    text-align: center;
+}
+
+.user_information{
+    border: 2px solid black;
+    display: block;
+    margin: 0 auto;
+    width: 60%;
+    height: 200px;
+}
+.user_function {
+    margin-top: 20px;
+}
+.user_btn {
+    display: block;
+    margin: 10px auto;
+    width: 300px;
+    height: 100px;
+}
+
+.user_btn{
+    background:#fff;
+    color:black;
+    border:none;
+    position:relative;
+    height:60px;
+    font-size:1.6em;
+    padding:0 2em;
+    cursor:pointer;
+    transition:800ms ease all;
+    outline:none;
+    border: 1px solid black;
+}
+.user_btn:hover{
+    background:black;
+    color:#fff;
+  }
+.user_btn:before, .user_btn:after{
+    content:'';
+    position:absolute;
+    top:0;
+    right:0;
+    height:2px;
+    width:0;
+    background: black;
+    transition:400ms ease all;
+  }
+.user_btn:after{
+    right:inherit;
+    top:inherit;
+    left:0;
+    bottom:0;
+  }
+  .user_btn:hover:before,.user_btn:hover:after{
+    width:100%;
+    transition:800ms ease all;
+  }
+  
+  

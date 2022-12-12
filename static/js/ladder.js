@@ -19,13 +19,17 @@ const makeRl = () => {
     $("#makeRl").toggle()
 }
 
+$("#want_food").keyup(function(event) {
+  if (event.key == "Enter") {
+    addTextbox()
+  }
+});
 const addTextbox = () => {
     const box = document.getElementById("ladder");
     const newP = document.createElement('div');
     newP.classList.add('p_tag')
     const foodValue = document.getElementById('want_food').value
     if(foodValue === ""){
-        alert("메뉴를 입력해주셔야죠..")
     }
     else {
         newP.innerHTML = "<p class='ladder_p_tag'>" + foodValue + "</p><input id='"+foodValue+"' type='button' class='ladder_btn' value='삭제' onclick='remove(this)'>";
