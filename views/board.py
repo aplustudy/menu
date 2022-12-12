@@ -44,7 +44,7 @@ def detail(board_index):
 def create():	
     form = BoardForm()
     if request.method == "POST" and form.validate_on_submit():
-        post = Board(title = form.title.data, content = form.content.data, datetime = datetime.now(), user = 'temp')
+        post = Board(title = form.title.data, content = form.content.data, user = form.login_name.data, datetime = datetime.now())        
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('board._list'))
