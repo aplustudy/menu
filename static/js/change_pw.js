@@ -2,7 +2,7 @@
 function change_pw() {
 
     if ($('#email').val() == ""){
-        alert('아이디(이메일 주소)를 입력해주세요.')
+        alert('현재 아이디(이메일 주소)를 입력해주세요.')
         return false;
     }
     if ($('#password').val() == ""){

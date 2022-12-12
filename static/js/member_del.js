@@ -1,5 +1,15 @@
 //회원 탈퇴
 function member_del() {
+
+    if ($('#email').val() == ""){
+        alert('사용 중인 아이디(이메일 주소)를 입력해주세요.')
+        return false;
+    }
+    if ($('#password').val() == ""){
+        alert('사용 중인 비밀번호를 입력해주세요.')
+        return false;
+    }
+
     $.ajax({
         type: "POST",
         url: "/member_del/api",
