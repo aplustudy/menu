@@ -1,5 +1,19 @@
-// 현재 비밀번호가 맞으면, 수정 / 변경, 삭제는 post지
+// 현재 아이디 비밀번호가 맞으면, 비밀번호2로 변경
 function change_pw() {
+
+    if ($('#email').val() == ""){
+        alert('아이디(이메일 주소)를 입력해주세요.')
+        return false;
+    }
+    if ($('#password').val() == ""){
+        alert('현재 비밀번호를 입력해주세요.')
+        return false;
+    }
+    if ($('#password2').val() == ""){
+        alert('변경할 비밀번호를 입력해주세요.')
+        return false;
+    }
+
     $.ajax({
         type: "POST",
         url: "/change_pw/api",
