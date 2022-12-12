@@ -13,7 +13,8 @@ def create(board_index):
     board = Board.query.get_or_404(board_index)
     if form.validate_on_submit():
         content = request.form['content']
-        comment = Comment(content=content, datetime=datetime.now(), user = 'temp')
+        login_name = request.form['login_name']
+        comment = Comment(content=content, datetime=datetime.now(), user = login_name)
         board.comment_set.append(comment)
         db.session.commit()
         return redirect(url_for('board.detail', board_index = board_index))

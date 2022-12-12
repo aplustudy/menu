@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, url_for, request
+from flask import Blueprint, render_template, url_for, request, jsonify
 from views.models import Board, Comment
 from views.forms import BoardForm
 from datetime import datetime

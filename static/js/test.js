@@ -94,13 +94,13 @@ const menuAjax = (cate, menu) => {
       const food = response['foods'];
       console.log(menu);
       for (let i = 0; i < food.length; i++) {
-        if (food[i].category === cate) {
-          if ((food[i].q1 == -1 || food[i].q1 == menu.q1) && (food[i].q2 == -1 ||food[i].q2 == menu.q2)) {
-            if ((food[i].q3 == -1 || food[i].q3 == menu.q3) && (food[i].q4 == -1 ||food[i].q4 == menu.q4)) {
-                foodList.push(food[i].name);
-            }
-          }
-        }
+        let [q1, q2, q3, q4] = [food[i].q1, food[i].q2, food[i].q3, food[i].q4];
+        let condition = food[i].category === cate &&
+                        (q1 == -1 || q1 == menu.q1) && (q2 == -1 || q2 == menu.q2) && 
+                        (q3 == -1 || q3 == menu.q3) && (q4 == -1 || q4 == menu.q4);
+        if (condition){ 
+          foodList.push(food[i].name) 
+        };
       }
       let a = foodList[Math.floor(Math.random() * foodList.length)]
       b = a
