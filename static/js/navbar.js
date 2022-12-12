@@ -1,10 +1,3 @@
-const readyTostart = () => {
-  // 로그아웃 추가_토큰삭제
-function logout() {
-  console.log('logout!')
-  $.removeCookie('mytoken', {path: '/'});
-}
-
 // 호출하자마자 불러오기
 $(document).ready(
   function () {
@@ -23,7 +16,13 @@ $(document).ready(
       }
   })
 });
-}
+
+  // 로그아웃 추가_토큰삭제
+  function logout() {
+    console.log('logout!')
+    $.removeCookie('mytoken', {path: '/'});
+  
+  }
 
 
 
@@ -142,4 +141,3 @@ class NavBar extends HTMLElement {
 
 
 window.customElements.define('main-nav-bar', NavBar);
-readyTostart()
