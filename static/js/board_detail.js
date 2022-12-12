@@ -6,11 +6,14 @@ $(document).ready(
         data: {},
         success: function (response) {
             if (response['result'] == 'success') {
-                let login_name = response['name']
-                document.getElementById('login_name').value = login_name
+                let user_id = response['name']
+                let user_email = response['email']
+                document.getElementById('user_id').value = user_id
+                document.getElementById('user_email').value = user_email
             } else {
                 console.log(response['msg'])
-                document.getElementById('login_name').value = '익명'
+                document.getElementById('user_id').value = '익명'
+                document.getElementById('user_email').value = '익명'
             }
         }
         })

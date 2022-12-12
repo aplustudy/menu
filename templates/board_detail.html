@@ -25,27 +25,27 @@
                 <div class="card-text" style="white-space: pre-line;">{{ board.content }}</div>
                 <div class="d-flex justify-content-end">
                     <div class="badge bg-light text-dark p-2">
-                        {{ board.datetime|datetime }} | {{ board.user }}
+                        {{ board.datetime|datetime }} | {{ board.user }} | {{board.user_email}}
                     </div>
                 </div>
             </div>
         </div>
         <!-- 댓글 목록 -->
         <h5 class="border-bottom my-3 py-2">{{ board.comment_set|length }}개의 댓글이 있습니다.</h5>
-        {% for answer in board.comment_set %}
+        {% for comment in board.comment_set %}
         <div class="card my-3">
             <div class="card-body">
-                <div class="card-text" style="white-space: pre-line;">{{ answer.content }}</div>
+                <div class="card-text" style="white-space: pre-line;">{{ comment.content }}</div>
                 <div class="d-flex justify-content-end">
                     <div class="badge bg-light text-dark p-2">
-                        {{ answer.datetime|datetime }} | by {{ answer.user }}
+                        {{ comment.datetime|datetime }} | {{ comment.user }} | {{comment.user_email}}
                     </div>
                 </div>
             </div>
         </div>
         {% endfor %}
         <!-- 댓글 등록 -->
-        <form action="{{ url_for('comment.create', board_index=board.index) }}" method="post" class="my-3">        
+        <form action="{{ url_for('comment.create', board_index=board.index) }}" method="post" class="my-3" enctype = "multipart/form-data">        
             {{ form.csrf_token }}
             <!-- 오류표시 Start -->
             {% if form.errors %}
@@ -64,6 +64,7 @@
             <div class="mb-3">
                 <textarea name="content" id="content" class="form-control" rows="10"></textarea>
                 <input type="hidden" id="login_name" name="login_name" value="{{ login_name }}">
+                <input type="hidden" id="login_email" name="login_email" value="{{ login_email }}">
             </div>
             <input type="submit" value="댓글 등록" class="btn btn-primary">
             <a href="{{ url_for('board._list') }}" class="btn btn-secondary" style="float: right">돌아가기</a>
