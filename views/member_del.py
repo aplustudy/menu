@@ -30,8 +30,8 @@ def api_member_del():
     result = db.user.delete_one({'email': email_receive, 'password': pw_hash})
 
     # 찾으면 JWT 토큰을 만들어 발급합니다.
-    if result is not None:
+
+    if result.deleted_count != 0:
         return jsonify({'result': 'success'})
-    # 찾지 못하면
     else:
-        return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})
+        return jsonify({'result': 'fail', 'msg': '아이디/비밀번호가 일치하지 않습니다.'})xs
