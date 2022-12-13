@@ -20,13 +20,13 @@ function loginCall() {
     })
 }
 
-$("#email").keyup(function(event) {
-    if (event.key == "Enter") {
-        loginCall()
-    }})
-$("#password").keyup(function(event) {
-    if (event.key == "Enter") {
-        loginCall()
-    }})
+// $("#email").keyup(function(event) {
+//     if (event.key == "Enter") {
+//         loginCall()
+//     }})
+// $("#password").keyup(function(event) {
+//     if (event.key == "Enter") {
+//         loginCall()
+//     }})
 
     
