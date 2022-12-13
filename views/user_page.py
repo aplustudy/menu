@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from pymongo import MongoClient
 import certifi
 import jwt
@@ -18,5 +18,5 @@ def main():
         userinfo = db.user.find_one({'email': payload['email']}, {'_id': 0})
         user_email = userinfo['email']
     except:
-        user_email = userinfo['익명']
+        return redirect(url_for('login.loginCall'))
     return render_template("user_page.html", user_email = user_email)

@@ -8,23 +8,26 @@ $(document).ready(
       success: function (response) {
           if (response['result'] == 'success') {
               let name = response['name']
-              login_name = name
               $("#myname2").text(name + "님, 환영합니다!");
+              let html = 
+              `<li><a class="dropdown-item" href="/user_page">내정보 보기</a></li>
+              <li><a class="dropdown-item" onclick="logout()" value="로그아웃" href="/">로그아웃</a></li>`
+              $("#dropdown").append(html)
           } else {
-              console.log(response['msg'])
+              let html = 
+              `<li><a class="dropdown-item" href="/login">로그인</a></li>
+              <li><a class="dropdown-item" href="/join" value="회원가입" href="/">회원가입</a></li>`
+              $("#dropdown").append(html)
           }
       }
   })
 });
 
-  // 로그아웃 추가_토큰삭제
-  function logout() {
-    console.log('logout!')
-    $.removeCookie('mytoken', {path: '/'});
-  
-  }
-
-
+// 로그아웃 추가_토큰삭제
+function logout() {
+  console.log('logout!')
+  $.removeCookie('mytoken', {path: '/'});
+}
 
 const userId = ''
 
@@ -118,10 +121,7 @@ class NavBar extends HTMLElement {
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       내정보
                     </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/user_page">내정보 보기</a></li>
-                      <li><a class="dropdown-item" href="/login">로그인</a></li>
-                      <li><a class="dropdown-item" onclick="logout()" value="로그아웃" href="/">로그아웃</a></li>
+                    <ul class="dropdown-menu" id="dropdown">
                     </ul>
                   </li>
                 </ul>

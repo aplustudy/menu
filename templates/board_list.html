@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/static/js/navbar.js" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="/static/js/navbar.js" defer></script>
+    <script src="/static/js/board_list.js" defer></script>
     <title>Document</title>
 </head>
 
@@ -23,10 +24,11 @@
     {% set last_page = (board_list.total+9) // 10 %}
     {% set last_page_group = (last_page-1) // ppg + 1 %}
 
-    <!-- 검색 -->    
     <div class="row my-3">
-        <div class="col-6">
+        <div class="row-3">
+            <!-- 게시글 작성 버튼 -->   
             <a href="{{ url_for('board.create') }}" class="btn btn-primary">게시글 작성</a>
+            <!-- 드롭다운 메뉴 START -->   
             <div class="dropdown">
                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 {{tab or '전체'}}
@@ -57,15 +59,7 @@
                     {% endif %}
                 </ul>
             </div>
-        </div>
-        <div class="col-6">
-            <div class="input-group">
-                <input type="text" id="search_kw" class="form-control" value="{{ kw or '' }}" style="margin-right:10px">
-                <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="btn_search">검색</button>
-                    <button class="btn btn-outline-danger" type="button" id="btn_search_reset">리셋</button>
-                </div>
-            </div>
+            <!-- 드롭다운 메뉴 END -->   
         </div>
     </div>
 
@@ -116,7 +110,18 @@
         </tbody>
     </table>    
 
-    <!-- 페이징처리 -->
+    <!-- 검색 버튼 그룹 -->
+    <div class="row-6" style="width:50% ; margin-bottom:10px ; justify-content: center;">
+        <div class="input-group" >
+            <input type="text" id="search_kw" class="form-control" value="{{ kw or '' }}" style="margin-right:10px">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="button" id="btn_search">검색</button>
+                <button class="btn btn-outline-danger" type="button" id="btn_search_reset">리셋</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 페이징처리 START -->
     <ul class="pagination justify-content-center">
         <!-- 맨앞 -->
         {% if board_list.page > ppg %}
@@ -157,65 +162,17 @@
         </li>
         {% endif %}
     </ul>
-    <!-- 페이징처리 -->
+    <!-- 페이징처리 END -->
+
+
     <!-- 검색 폼 -->
     <form class="searchArea" id="searchForm" method="get" action="{{ url_for('board._list') }}">
         <input type="hidden" id="kw" name="kw" value="{{ kw or '' }}">
         <input type="hidden" id="page" name="page" value="{{ page }}">
         <input type="hidden" id="tab" name="tab" value="{{ tab }}">
     </form>
-    <!-- 검색 폼 -->
-    <script type='text/javascript'>
-        const page_elements = document.getElementsByClassName("page-link");
-        Array.from(page_elements).forEach(function(element) {
-            element.addEventListener('click', function() {
-                document.getElementById('page').value = this.dataset.page;
-                document.getElementById('searchForm').submit();
-            });
-        });
-        const btn_search = document.getElementById("btn_search");
-        btn_search.addEventListener('click', function() {
-            document.getElementById('kw').value = document.getElementById('search_kw').value;
-            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-            document.getElementById('tab').value = document.getElementById('tab').value;
-            document.getElementById('searchForm').submit();
-        });
-        const btn_search_reset = document.getElementById("btn_search_reset");
-        btn_search_reset.addEventListener('click', function() {
-            document.getElementById('kw').value = ''
-            document.getElementById('page').value = 1;
-            document.getElementById('tab').value = document.getElementById('tab').value;
-            document.getElementById('searchForm').submit();
-        });
-        const tab0 = document.getElementById("tab0");
-        tab0.addEventListener('click', function() {
-            document.getElementById('kw').value = document.getElementById('search_kw').value;
-            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-            document.getElementById('tab').value = ''
-            document.getElementById('searchForm').submit();
-        });
-        const tab1 = document.getElementById("tab1");
-        tab1.addEventListener('click', function() {
-            document.getElementById('kw').value = document.getElementById('search_kw').value;
-            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-            document.getElementById('tab').value = '일반'
-            document.getElementById('searchForm').submit();
-        });
-        const tab2 = document.getElementById("tab2");
-        tab2.addEventListener('click', function() {
-            document.getElementById('kw').value = document.getElementById('search_kw').value;
-            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-            document.getElementById('tab').value = '오늘 메뉴'
-            document.getElementById('searchForm').submit();
-        });
-        const tab3 = document.getElementById("tab3");
-        tab3.addEventListener('click', function() {
-            document.getElementById('kw').value = document.getElementById('search_kw').value;
-            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
-            document.getElementById('tab').value = '맛집 추천'
-            document.getElementById('searchForm').submit();
-        });
-    </script>
+
+    <!-- 홈으로 버튼 -->
     <a href="{{ url_for('main') }}" class="btn btn-secondary">홈으로</a>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 
