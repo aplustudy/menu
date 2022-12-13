@@ -1,36 +1,36 @@
-.user_page {
-    text-align: center;
+.user_page{
+  text-align: right;
 }
 
 .user_information{
-    border: 2px solid black;
     display: block;
     margin: 0 auto;
-    width: 60%;
-    height: 200px;
+    border-bottom: 2px solid pink;
+    padding:0 1em;
+
 }
 .user_function {
     margin-top: 20px;
+    float: right;
 }
 .user_btn {
     display: block;
-    margin: 10px auto;
-    width: 300px;
+    width: 230px;
     height: 100px;
 }
 
 .user_btn{
+  text-decoration-line : none;
     background:#fff;
     color:black;
     border:none;
     position:relative;
     height:60px;
     font-size:1.6em;
-    padding:0 2em;
+    padding:0 1em;
     cursor:pointer;
     transition:800ms ease all;
     outline:none;
-    border: 1px solid black;
 }
 .user_btn:hover{
     background:black;

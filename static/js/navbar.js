@@ -88,9 +88,9 @@ class NavBar extends HTMLElement {
         this.innerHTML = `
 
 		<div class="nav-bar">
-        <nav class="navbar bg-light fixed-top">
+        <nav class="navbar fixed-top" style="background-color:rgb(210, 210, 210)">
           <div class="container-fluid">
-            <a class="navbar-brand" href="/">오메추!</a>
+          <a class="navbar-brand" href="/"><img src="/static/images/favicon.png" style="width: 30px; height: 30px; margin-right:10px"><span style="color: pink;">오</span><span style="color: black;">메</span><span style="color: white;">추!</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -109,7 +109,7 @@ class NavBar extends HTMLElement {
                     <a class="nav-link" href="/roulette">랜덤 룰렛</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/ladder">사다리타기</a>
+                    <a class="nav-link" href="/ladder">커스텀 룰렛</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/test">메뉴 추천</a>
@@ -130,7 +130,6 @@ class NavBar extends HTMLElement {
             </div>
           </div>
         </nav>
-            
       </div>
 
 		`

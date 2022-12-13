@@ -96,13 +96,13 @@ article {
 .btn-start {
     font-size: 16px;
     color: black;
-    background-color: #d2a6e8;
+    background-color: #ffc1c0;
     width: 95%;
     height: 100px;
     margin: 0 auto;
     border-radius: 10px;
     max-width: 400px;
-    border-color: #d2a6e8;
+    border-color: #ffc1c0;
 }
 .btn-start:visited, .btn-start:hover, .btn-start:active {
     font-size: 16px;
@@ -118,9 +118,7 @@ article {
     width: 120px;
     height: 150px;
 }
-.start{
-    /* display: none; */
-}
+
 
 /* 문제 화면 */
 .cate_qus {
@@ -161,7 +159,7 @@ article {
     color: #1f1f1f;
 }
 .progress-bar {
-    background-color: green;
+    background-color: #ffc1c0;
     width: 100%;
 }
 .progress {

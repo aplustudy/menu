@@ -8,8 +8,10 @@
     <link href="/static/css/test.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="shortcut icon" href="/static/images/favicon.ico">
     <script src="/static/js/navbar.js" defer></script>
-    <title>Document</title>
+    <title>뭐먹지 월드컵</title>
 </head>
 <body class="container">
         <main-nav-bar></main-nav-bar>
@@ -17,14 +19,15 @@
         <!-- 시작 페이지 -->
         <article class="start">
              <img id="img" class="mt-5" src="/static/images/test.png" alt="음식 테스트">
-            <button type="button" class="startQus btn-start mt-3" id="startButton" onclick='cateStart()'>테스트 시작하기</button>
+            <button type="button" class="startQus btn-start mt-3" id="startButton" onclick='cateStart()'>골라보자</button>
         </article>
         <!-- 문제 시작  -->
         <!-- 카테고리별 문제 -->
         <article class="cate_qus">
             <div class="cate_question">
                 
-                <h2 class="text-center mt-3">당신이 좋아하는 카테고리는?</h2>
+                <h2 class="text-center mt-3">이정도는 골라보자</h2>
+                <p class="text-center mt-3" style="color: grey">Tip. 최근에 먹었던 것 거르기</p>
                 <div class="cate_button">
                 <button id="KR"class="cate_btn">한식</button>
                 <button id="CN"class="cate_btn">중식</button>
@@ -54,8 +57,10 @@
         </article>
         <!-- 결과창 -->
         <article class="menu_result" style="display: none">
-            <h1 class="text-center">오늘의 추천 메뉴는??</h1>
+            <h1 class="text-center">오늘의 이거 먹자</h1>
             <h4 id="result_menu" class="text-center">menu</h4>
+            <button class="" onclick="$('.menulist').toggle();">모든 메뉴 보기</button>
+            <div class="menulist" style="display: none">메뉴</div>
         </article>
         <input type="hidden" id ="q1" value="0">
         <input type="hidden" id ="q2" value="0">

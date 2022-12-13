@@ -20,8 +20,8 @@ const q = {
   1: {
     title: '면 or 밥 당신의 선택은?? ( 빵은 햄버거 드세요 )',
     type: 'q1',
-    A: '면',
-    B: '밥',
+    A: '밥',
+    B: '면',
   },
   2: {
     title: '매운 음식 vs 안 매운 음식',
@@ -59,8 +59,10 @@ $('#JP').click(function () {
 // 기본 js 기능이 아닌 jquery 기능이에요!
 // 직관적인 코드라 cateStart 실행시 start 화면은 숨기고 그 다음 카테 고르는 화면 나오는 기능입니다.
 const cateStart = () => {
-  $('.start').hide();
+  setTimeout(() => {
+    $('.start').hide();
   $('.cate_qus').show();
+  }, 100)
 };
 function start() {
   $('.cate_qus').hide();
@@ -81,7 +83,7 @@ $('#B').click(function () {
 // 마지막 결과값을 뽑기 위해 Ajax 요청으로 db에 값을 가져오는 코드입니다.
 const menuAjax = (cate, menu) => {
     const foodList = [];
-    let b = ''
+    let b = []
   $.ajax({
     type: 'GET', // Get은 데이터 요청 POST는 데이터 보내기
     url: '/food_db',
@@ -102,8 +104,7 @@ const menuAjax = (cate, menu) => {
           foodList.push(food[i].name) 
         };
       }
-      let a = foodList[Math.floor(Math.random() * foodList.length)]
-      b = a
+      b = [...foodList]
     },
   });
   return b
@@ -118,8 +119,11 @@ const whatMenu = () => {
     q4: $('#q4').val(),
   };
     const result = menuAjax(menu, menu_choice);
-    if(result){
-        $("#result_menu").html(result)
+    const resultOne = result[[Math.floor(Math.random() * result.length)]]
+    if(resultOne){
+        $("#result_menu").html(resultOne)
+        $(".menulist").html(result)
+        console.log(result);
     }
     else{
         $("#result_menu").html("이런 메뉴는 없어요")
@@ -143,4 +147,7 @@ function next() {
     $('#B').html(q[num]['B']);
     num++;
   }
+}
+const allmenu = () => {
+  $('.loading').toggle();
 }

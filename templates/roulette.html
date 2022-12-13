@@ -9,27 +9,29 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
     <script src="/static/js/navbar.js" defer></script>
-
-    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/font.css">
+    <title>룰렛 돌리기</title>
 </head>
 <body>
     <div>
         <main-nav-bar></main-nav-bar>
         <div class="roulette_main">
-          <div>
-            <h2>메뉴 추천해드립니다</h2>
+          <h2>돌려 돌려!</h2>
+          <div id="menu">
+            <div><span class="spaen">사용 설명서</span>
+              <p class="arrow_box">버튼 클릭시 각 카테고리에 맞는 메뉴로 룰렛이 변경됩니다!</p></div>
           </div>
-          <div class="roulette_main_btn">
+
+          <div id='r_b' class="mt-4 roulette_main_btn">
             <button class="roulette_cate_btn" onclick="foodSelect('랜덤')">랜덤</button>
             <button class="roulette_cate_btn" onclick="foodSelect('한식')">한식</button>
             <button class="roulette_cate_btn" onclick="foodSelect('중식')">중식</button>
             <button class="roulette_cate_btn" onclick="foodSelect('양식')">양식</button>
             <button class="roulette_cate_btn" onclick="foodSelect('일식')">일식</button>
-            <button class="roulette_cate_btn">기타</button>
           </div>
-          <div class="roulette">
+          <div class="roulette mt-4">
             <canvas width="380" height='380'></canvas>  
-            <button class="roulette_btn" onclick="rotate()">룰렛 돌리기</button>
+            <button id='r_b1'class="roulette_btn" onclick="rotate()">룰렛 돌리기</button>
           </div>
         </div>
     </div>
