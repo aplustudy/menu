@@ -98,27 +98,12 @@ const rotate = () => {
 const target = (tf) => {
   const target = document.getElementById('r_b')
   const target1 = document.getElementById('r_b1')
-  const target2 = document.getElementById('r_b2')
-  const target3 = document.getElementById('r_b3')
-  const target4 = document.getElementById('r_b4')
-  const target5 = document.getElementById('r_b5')
-  const target6 = document.getElementById('r_b6')
   if(tf === 'on'){
   target.disabled = true;
   target1.disabled = true;
-  target2.disabled = true;
-  target3.disabled = true;
-  target4.disabled = true;
-  target5.disabled = true;
-  target6.disabled = true;
   }
   if(tf === 'off'){
     target.disabled = false;
     target1.disabled = false;
-    target2.disabled = false;
-    target3.disabled = false;
-    target4.disabled = false;
-    target5.disabled = false;
-    target6.disabled = false;
 }}
 newMake();
