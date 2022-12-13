@@ -7,7 +7,8 @@ class Board(db.Model): # 무조건 db.Model 써야함
     datetime = db.Column(db.DateTime(), nullable=False)
     user = db.Column(db.String(50), nullable=False)
     user_email = db.Column(db.String(50), nullable=True, server_default='asdf@asdf.com')
-    
+    file_name = db.Column(db.Text(), nullable=True, server_default=None)
+    tab = db.Column(db.Text(), nullable=True, server_default=None)   
 class Comment(db.Model):
     index = db.Column(db.Integer, primary_key=True)
     post_index = db.Column(db.Integer, db.ForeignKey('board.index', ondelete='CASCADE'))

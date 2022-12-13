@@ -28,6 +28,36 @@
     <div class="row my-3">
         <div class="col-6">
             <a href="{{ url_for('board.create') }}" class="btn btn-primary">게시글 작성</a>
+            <div class="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                {{tab or '전체'}}
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    {% if not tab %}
+                    <li><a class="dropdown-item active" id = "tab0" href="#">전체</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item " id = "tab0" href="#">전체</a></li>
+                    {% endif %}
+
+                    {% if tab == '일반' %}
+                    <li><a class="dropdown-item active" id = "tab1" href="#">일반</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item " id = "tab1" href="#">일반</a></li>
+                    {% endif %}
+
+                    {% if tab == '오늘 메뉴' %}
+                    <li><a class="dropdown-item active" id = "tab2" href="#">오늘 메뉴</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item " id = "tab2" href="#">오늘 메뉴</a></li>
+                    {% endif %}
+
+                    {% if tab == '맛집 추천' %}
+                    <li><a class="dropdown-item active" id = "tab3" href="#">맛집 추천</a></li>
+                    {% else %}
+                    <li><a class="dropdown-item " id = "tab3" href="#">맛집 추천</a></li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
         <div class="col-6">
             <div class="input-group">
@@ -45,6 +75,7 @@
         <thead>
         <tr class="table-dark">
             <th>번호</th>
+            <th>탭</th>
             <th>제목</th>
             <th>작성일시</th>
             <th>작성자</th>
@@ -55,9 +86,16 @@
             {% if board_list.items %}
                 {% for board in board_list.items %}
                     <tr>
-                        <td>{{ board.index }}</td>
+                        <td>{{ board.index }}</td>            
+                        <td>{% if board.tab %}
+                                {% if board.tab == '일반' %}
+                                <div style="color:darkgray"> {{'일반'}}</div>
+                                {% else %}
+                                <div class="text"> {{board.tab}}</div>
+                                {% endif %}
+                            {% endif %}</td> 
                         <td>
-                            <a href="{{ url_for('board.detail', board_index=board.index) }}">{{ board.title }}</a>                
+                            <a href="{{ url_for('board.detail', board_index=board.index) }}">{{ board.title }}</a>    
                             {% if board.comment_set|length > 0 %}
                             <span class="text-secondary small mx-2">[{{ board.comment_set|length }}]</span>
                             {% endif %}
@@ -125,6 +163,7 @@
     <form class="searchArea" id="searchForm" method="get" action="{{ url_for('board._list') }}">
         <input type="hidden" id="kw" name="kw" value="{{ kw or '' }}">
         <input type="hidden" id="page" name="page" value="{{ page }}">
+        <input type="hidden" id="tab" name="tab" value="{{ tab }}">
     </form>
     <!-- 검색 폼 -->
     <script type='text/javascript'>
@@ -139,12 +178,42 @@
         btn_search.addEventListener('click', function() {
             document.getElementById('kw').value = document.getElementById('search_kw').value;
             document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+            document.getElementById('tab').value = document.getElementById('tab').value;
             document.getElementById('searchForm').submit();
         });
         const btn_search_reset = document.getElementById("btn_search_reset");
         btn_search_reset.addEventListener('click', function() {
             document.getElementById('kw').value = ''
             document.getElementById('page').value = 1;
+            document.getElementById('tab').value = document.getElementById('tab').value;
+            document.getElementById('searchForm').submit();
+        });
+        const tab0 = document.getElementById("tab0");
+        tab0.addEventListener('click', function() {
+            document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+            document.getElementById('tab').value = ''
+            document.getElementById('searchForm').submit();
+        });
+        const tab1 = document.getElementById("tab1");
+        tab1.addEventListener('click', function() {
+            document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+            document.getElementById('tab').value = '일반'
+            document.getElementById('searchForm').submit();
+        });
+        const tab2 = document.getElementById("tab2");
+        tab2.addEventListener('click', function() {
+            document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+            document.getElementById('tab').value = '오늘 메뉴'
+            document.getElementById('searchForm').submit();
+        });
+        const tab3 = document.getElementById("tab3");
+        tab3.addEventListener('click', function() {
+            document.getElementById('kw').value = document.getElementById('search_kw').value;
+            document.getElementById('page').value = 1;  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+            document.getElementById('tab').value = '맛집 추천'
             document.getElementById('searchForm').submit();
         });
     </script>
