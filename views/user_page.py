@@ -16,7 +16,7 @@ def main():
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         userinfo = db.user.find_one({'email': payload['email']}, {'_id': 0})
-        user_email = userinfo['email']
+        user_email = 'email'
     except:
-        user_email = userinfo['익명']
+        user_email = '익명'
     return render_template("user_page.html", user_email = user_email)

@@ -20,20 +20,13 @@ function loginCall() {
     })
 }
 
-// 호출하자마자 불러오기
-// $('document').ready(function () {
-//     $.ajax({
-//         type: "GET",
-//         url: "/login/isAuth",
-//         data: {},
-//         success: function (response) {
-//             if (response['result'] == 'success') {
-//                 let name = response['name']
-//                 $("#myname2").text(name + "님, 환영합니다!");
+$("#email").keyup(function(event) {
+    if (event.key == "Enter") {
+        loginCall()
+    }})
+$("#password").keyup(function(event) {
+    if (event.key == "Enter") {
+        loginCall()
+    }})
 
-//             } else {
-//                 console.log(response['msg'])
-//             }
-//         }
-//     })
-// });
+    
