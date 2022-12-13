@@ -106,7 +106,7 @@ class NavBar extends HTMLElement {
                     <a class="nav-link" href="/roulette">랜덤 룰렛</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/ladder">사다리타기</a>
+                    <a class="nav-link" href="/ladder">커스텀 룰렛</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/test">메뉴 추천</a>
@@ -130,7 +130,6 @@ class NavBar extends HTMLElement {
             </div>
           </div>
         </nav>
-            
       </div>
 
 		`

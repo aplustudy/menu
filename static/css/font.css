@@ -1,0 +1,8 @@
+@font-face {
+    src: url("/static/font/BMJUA_otf.otf");
+    font-family: 'jua';
+
+}
+body {
+    font-family: 'jua';
+}
