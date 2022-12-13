@@ -54,7 +54,7 @@ def api_valid():
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         # payload 안에 id가 들어있습니다. 이 id로 유저정보를 찾습니다.
         userinfo = db.user.find_one({'email': payload['email']}, {'_id': 0})
-        return jsonify({'result': 'success', 'name': userinfo['name']})
+        return jsonify({'result': 'success', 'name': userinfo['name'], 'email': userinfo['email']})
     except jwt.exceptions.ExpiredSignatureError:
         # 위를 실행했는데 만료시간이 지났으면 에러가 납니다.
         return jsonify({'result': 'fail', 'msg': '로그인 시간이 만료되었습니다.'})

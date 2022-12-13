@@ -14,7 +14,8 @@ def create(board_index):
     if form.validate_on_submit():
         content = request.form['content']
         login_name = request.form['login_name']
-        comment = Comment(content=content, datetime=datetime.now(), user = login_name)
+        login_email = request.form['login_email']
+        comment = Comment(content=content, datetime=datetime.now(), user = login_name, user_email = login_email)
         board.comment_set.append(comment)
         db.session.commit()
         return redirect(url_for('board.detail', board_index = board_index))
