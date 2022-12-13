@@ -8,6 +8,7 @@ class BoardForm(FlaskForm):
     login_name = TextAreaField('user')
     login_email = TextAreaField('user')
     file_upload = FileField('user')
+    tab = StringField('tab')
     #StringField 글자수 제한, TextAreaField 글자수 제한 없음
 
 class CommentForm(FlaskForm):

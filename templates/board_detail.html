@@ -19,17 +19,28 @@
     <div class="container my-3">
         <!-- 게시글 -->
         <h2 class="border-bottom py-2">{{ board.title }}</h2>
-
         <div class="card my-3">
             <div class="card-body">
-                <div class="card-text" style="white-space: pre-line;">{{ board.content }}</div>
+                <div class="card-text" style="white-space: pre-line;">{{ board.content }}
+                    {% if board.file_name %}
+                    <img src="{{ url_for('static', filename=board.file_name) }}">
+                    {% endif %}
+                </div>
                 <div class="d-flex justify-content-end">
                     <div class="badge bg-light text-dark p-2">
-                        {{ board.datetime|datetime }} | {{ board.user }} | {{board.user_email}}
+                        {{ board.datetime|datetime }} | {{ board.user }}
                     </div>
                 </div>
             </div>
         </div>
+        {% if user_email == board.user_email %}
+        <div class="container">
+            <a href="{{ url_for('board.modify', board_index=board.index) }}"
+            class="btn btn-outline-primary">수정</a>
+            <button class="btn btn-outline-secondary" onclick="delete_bucket()">삭제</button>
+        <br>
+        </div>
+        {% endif %}
         <!-- 댓글 목록 -->
         <h5 class="border-bottom my-3 py-2">{{ board.comment_set|length }}개의 댓글이 있습니다.</h5>
         {% for comment in board.comment_set %}
@@ -38,7 +49,7 @@
                 <div class="card-text" style="white-space: pre-line;">{{ comment.content }}</div>
                 <div class="d-flex justify-content-end">
                     <div class="badge bg-light text-dark p-2">
-                        {{ comment.datetime|datetime }} | {{ comment.user }} | {{comment.user_email}}
+                        {{ comment.datetime|datetime }} | {{ comment.user }}
                     </div>
                 </div>
             </div>
@@ -65,6 +76,7 @@
                 <textarea name="content" id="content" class="form-control" rows="10"></textarea>
                 <input type="hidden" id="login_name" name="login_name" value="{{ login_name }}">
                 <input type="hidden" id="login_email" name="login_email" value="{{ login_email }}">
+                <input type="hidden" id="board_index" name="board_index" value="{{ board.index }}">
             </div>
             <input type="submit" value="댓글 등록" class="btn btn-primary">
             <a href="{{ url_for('board._list') }}" class="btn btn-secondary" style="float: right">돌아가기</a>

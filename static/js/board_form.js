@@ -19,3 +19,31 @@ $(document).ready(
         })
   });
   
+  $('.file_delete').click( function() {
+    $("#file_upload").val("");
+  } );
+
+  $('#tab1').click( function() {
+    $("#dropdownMenuButton1").text('일반')
+    $("#tab").val('일반')
+    $("#tab1").attr('class','dropdown-item active');
+    $("#tab2").attr('class','dropdown-item');
+    $("#tab3").attr('class','dropdown-item');
+  } );
+
+  $('#tab2').click( function() {
+    $("#dropdownMenuButton1").text('오늘 메뉴')
+    $("#tab").val('오늘 메뉴')
+    $("#tab1").attr('class','dropdown-item');
+    $("#tab2").attr('class','dropdown-item active');
+    $("#tab3").attr('class','dropdown-item');
+  } );
+
+  $('#tab3').click( function() {
+    $("#dropdownMenuButton1").text('맛집 추천')
+    $("#tab").val('맛집 추천')
+    $("#tab1").attr('class','dropdown-item');
+    $("#tab2").attr('class','dropdown-item');
+    $("#tab3").attr('class','dropdown-item active');
+  } );
+  
