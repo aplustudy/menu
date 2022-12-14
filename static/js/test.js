@@ -22,15 +22,17 @@ const q = {
     type: 'q1',
     A: '밥',
     B: '면',
+    C: '둘 다 별로'
   },
   2: {
     title: '매운 음식 vs 안 매운 음식',
     type: 'q2',
     A: '매워야 음식이지',
     B: '나는야 맵찔이',
+    C: '상관없어'
   },
-  3: { title: '국물 vs 국물 X', type: 'q3', A: '국물', B: '국물 X' },
-  4: { title: '고기 vs 고기 X', type: 'q4', A: '고기', B: '고기 X' },
+  3: { title: '국물 vs 국물 X', type: 'q3', A: '국물', B: '국물 X', C: '상관없어'},
+  4: { title: '고기 vs 고기 X', type: 'q4', A: '고기', B: '고기 X', C: '상관없어'},
 };
 // --------------------------------------------------------------
 
@@ -47,6 +49,8 @@ $('#CN').click(function () {
 });
 $('#AM').click(function () {
   let cate = $('#cate').val('양식');
+  num = 2
+  $('#q1').val(-1);
   start();
 });
 $('#JP').click(function () {
@@ -72,11 +76,17 @@ function start() {
 // 버튼이 위 아래로 2개가 있는데 그 중 위에 버튼을 누르면 value 값에 + 1 해주는 함수입니다.
 $('#A').click(function () {
   let type = $('#type').val();
-  let preValue = $('#' + type).val();
-  $('#' + type).val(parseInt(preValue) + 1);
+  $('#' + type).val(1);
   next();
 });
 $('#B').click(function () {
+  let type = $('#type').val();
+  $('#' + type).val(0);
+  next();
+});
+$('#C').click(function () {
+  let type = $('#type').val();
+  $('#' + type).val(-1);
   next();
 });
 
@@ -98,8 +108,8 @@ const menuAjax = (cate, menu) => {
       for (let i = 0; i < food.length; i++) {
         let [q1, q2, q3, q4] = [food[i].q1, food[i].q2, food[i].q3, food[i].q4];
         let condition = food[i].category === cate &&
-                        (q1 == -1 || q1 == menu.q1) && (q2 == -1 || q2 == menu.q2) && 
-                        (q3 == -1 || q3 == menu.q3) && (q4 == -1 || q4 == menu.q4);
+                        (q1 == menu.q1) && (menu.q2 == -1 || q2 == -1 || q2 == menu.q2) && 
+                        (menu.q3 == -1 || q3 == -1 || q3 == menu.q3) && (menu.q4 == -1 || q4 == -1 || q4 == menu.q4);
         if (condition){ 
           foodList.push(food[i].name) 
         };
@@ -145,6 +155,7 @@ function next() {
     $('#type').val(q[num]['type']);
     $('#A').html(q[num]['A']);
     $('#B').html(q[num]['B']);
+    $('#C').html(q[num]['C']);
     num++;
   }
 }

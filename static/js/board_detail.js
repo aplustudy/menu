@@ -13,7 +13,7 @@ $(document).ready(
             } else {
                 console.log(response['msg'])
                 document.getElementById('login_name').value = '익명'
-                document.getElementById('login_email').value = '익명'
+                document.getElementById('login_email').value = ''
             }
         }
         })

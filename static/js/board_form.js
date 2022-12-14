@@ -13,7 +13,8 @@ $(document).ready(
             } else {
                 console.log(response['msg'])
                 document.getElementById('login_name').value = '익명'
-                document.getElementById('login_email').value = '익명'
+                document.getElementById('login_email').value = 'anonymous@anonymous.com'
+                $("#anonymous_warn").text("익명 게시글은 수정 및 삭제가 불가능합니다.");
             }
         }
         })
