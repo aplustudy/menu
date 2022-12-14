@@ -90,7 +90,10 @@ class NavBar extends HTMLElement {
 		<div class="nav-bar">
         <nav class="navbar fixed-top" style="background-color:rgb(210, 210, 210)">
           <div class="container-fluid">
-          <a class="navbar-brand" href="/"><img src="/static/images/favicon.png" style="width: 30px; height: 30px; margin-right:10px"><span style="color: pink;">오</span><span style="color: black;">메</span><span style="color: white;">추!</span></a>
+          <a class="navbar-brand" href="/"><img src="/static/images/favicon.png" style="width: 30px; height: 30px; margin-right:10px">
+          <span style="color: pink;text-shadow:1px 1px 1px #000;">오</span>
+          <span style="color: rgb(250, 133, 133);text-shadow:1px 1px 1px #000;">메</span>
+          <span style="color: deeppink;text-shadow:1px 1px 1px #000;">추!</span></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -126,7 +129,6 @@ class NavBar extends HTMLElement {
                   </li>
                 </ul>
               </div>
-              <div id="myname2">로그인을 해주세요.</div>
             </div>
           </div>
         </nav>

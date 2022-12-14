@@ -58,7 +58,7 @@ def detail(board_index):
         userinfo = mongodb.user.find_one({'email': payload['email']}, {'_id': 0})
         user_email = userinfo['email']
     except:
-        user_email = ''
+        user_email = '익명'
     # email 획득
     return render_template('/board_detail.html', board = board, form = form, user_email = user_email)
 
