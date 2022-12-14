@@ -1,0 +1,57 @@
+*{
+    text-align: center;
+}
+input[type='text'] {
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+  }
+  input[type='password'] {
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    width: 300px;
+    margin: 0 auto;
+    text-align: left;
+    font-family:"굴림";
+  }
+.btn {
+    color: black;
+    background-color: pink;
+    border: 0;
+    margin: 20px auto;
+    display: block;
+}
+.btn:hover{
+    background-color: deeppink;
+    color: white;
+}
+
+#comment{
+    height: 32px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 15px;
+    outline: none;
+    padding-left: 10px;
+    background-color: rgb(233, 233, 233);
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+#comment ::placeholder{
+    color: black;
+    opacity: 1;
+}

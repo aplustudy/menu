@@ -132,7 +132,16 @@ const whatMenu = () => {
     const resultOne = result[[Math.floor(Math.random() * result.length)]]
     if(resultOne){
         $("#result_menu").html(resultOne)
-        $(".menulist").html(result)
+        for(let i = 0; i < result.length; i++){
+          let new_pTag = document.createElement('p');
+          new_pTag.setAttribute('class', 'pTag');
+          new_pTag.innerHTML = result[i];
+          let menulist = document.getElementById('menulist');
+        
+            menulist.append(new_pTag);
+
+        }
+
     }
     else{
         $("#result_menu").html("이런 메뉴는 없어요")

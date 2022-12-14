@@ -26,7 +26,7 @@
         <form id="ladderForm">
           <input type="text" style="display:none;">
           <div id="box">
-              <input id="want_food" type="text" placeholder="내가 먹고 싶은 메뉴"> <input id="addBtn" type="button" value="추가" onclick="addTextbox()">
+              <input id="want_food" type="text" placeholder="내가 먹고 싶은 메뉴"> <input class="btn" id="addBtn" type="button" value="추가" onclick="addTextbox()">
           </div>
       </form>
         <div class="ladder">
@@ -34,17 +34,17 @@
           <div id="ladder">
           </div>
         </div>
-        <button onclick="makeRl()">룰렛 만들기</button>
+        <button class="roulette_btn" onclick="makeRl()">룰렛 만들기</button>
       </div>
     </div>
     <div id="makeRl" style="display: none">
       <div class="ladder_spin">
         <h2>메뉴 추천으로 돌아가기</h2>
-        <button class="main_btn" onclick="makeRl()">버튼</button>
+        <button id="r_b" class="main_btn" onclick="makeRl()">버튼</button>
       </div>
       <div class="roulette">
-        <canvas width="380" height='380'></canvas>  
-        <button class="roulette_btn" onclick="rotate()">룰렛 돌리기</button>
+        <canvas id="rlc" width="380" height='380'></canvas>  
+        <button id="r_b1" class="roulette_btn" onclick="rotate()">룰렛 돌리기</button>
       </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="   crossorigin="anonymous"></script>

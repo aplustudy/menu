@@ -13,10 +13,17 @@ const randomValue = (array) => {
 }
 
 const makeRl = () => {
+  if(fooddata.length === 0){
+    newMake()
+    $("#ladder_main").toggle()
+    $("#makeRl").toggle()
+  }
+  else{
     product = [...fooddata]
     newMake()
     $("#ladder_main").toggle()
     $("#makeRl").toggle()
+  }
 }
 
 $("#want_food").keyup(function(event) {
@@ -102,6 +109,7 @@ let product = [
   }
   
   const rotate = () => {
+    target('on')
     $c.style.transform = `initial`;
     $c.style.transition = `initial`;
     
@@ -115,10 +123,21 @@ let product = [
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
     setTimeout(() => {
+      target('off')
       alert(`오늘의 메뉴는?! ${product[ran]} 어떠신가요?`)
     }
       , 2000);
   }, 1);
 };
-  
+const target = (tf) => {
+  const target = document.getElementById('r_b')
+  const target1 = document.getElementById('r_b1')
+  if(tf === 'on'){
+  target.disabled = true;
+  target1.disabled = true;
+  }
+  if(tf === 'off'){
+    target.disabled = false;
+    target1.disabled = false;
+}}
   newMake();

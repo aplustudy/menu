@@ -5,6 +5,9 @@
 @media (max-width:500px){
 
 }
+.menu_result{
+    margin-top: 200px;
+}
 body {
     background-color: #ffffff;
     color: black;
@@ -160,7 +163,7 @@ article {
         display: block;
 }
 .menulust{
-    display: flex;
+    display: flexbox;
 }
 .all_menu:hover{
     background-color: deeppink;
@@ -220,7 +223,7 @@ article {
 
 
 .menu_result{
-    margin-top: 100px;
+    margin-top: 200px;
     text-align: center;
 }
 .share-message {
