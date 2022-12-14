@@ -35,7 +35,7 @@ let active4 = 'nav-link'
 let active5 = 'nav-link'
 
 let baseUrl = 'http://omecu.shop/'
-let nowUrl = window.location.href.substring(22) //baseUrl.length
+let nowUrl = window.location.href.substring(baseUrl.length) //22
 console.log(nowUrl)
 switch (nowUrl){
     case '':
