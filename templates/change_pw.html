@@ -10,7 +10,9 @@
     <link href="/static/css/user_page.css" rel="stylesheet">
     <link rel="shortcut icon" href="/static/images/favicon.ico">
     <script src="/static/js/change_pw.js" defer></script>
-    <link rel="stylesheet" href="/static/css/board.css">
+    <script src="/static/js/navbar.js" defer></script>
+    <link rel="stylesheet" href="/static/css/font.css">
+    <link rel="stylesheet" href="/static/css/user_page_in.css">
 
     <!--jquery cookie를 사용하기 위해 head영역에 둬야함.-->
     <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -25,16 +27,16 @@
         <div class="form-group">
             <label>현재 ID</label>
             <input type="text" class="form-control" aria-describedby="emailHelp"
-                   id="email" placeholder="">
+                   id="email" placeholder="Email">
         </div>
         <div class="form-group">
             <label>현재 비밀번호</label>
-            <input type="text" class="form-control" aria-describedby="emailHelp"
+            <input type="password" class="form-control" aria-describedby="emailHelp"
                    id="password" placeholder="">
         </div>
         <div class="form-group">
             <label>변경할 비밀번호</label>
-            <input type="text" class="form-control" aria-describedby="emailHelp"
+            <input type="password" class="form-control" aria-describedby="emailHelp"
                    id="password2" placeholder="">
         </div>
         <button type="submit" onclick="change_pw()" class="btn btn-primary">비밀번호 변경하기</button>

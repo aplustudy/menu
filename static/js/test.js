@@ -133,7 +133,6 @@ const whatMenu = () => {
     if(resultOne){
         $("#result_menu").html(resultOne)
         $(".menulist").html(result)
-        console.log(result);
     }
     else{
         $("#result_menu").html("이런 메뉴는 없어요")

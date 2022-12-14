@@ -30,11 +30,21 @@ input[type='text'] {
 }
 .ladder {
   max-height: 600px;
-  width: 400px;
+  width: 95%;
   min-height: 200px;
+  max-width: 400px;
   margin: 10px auto;
   border: 2px solid black;
   border-radius: 20px;
+}
+@media (max-width:500px){
+  .ladder {
+    width: 300px;
+    
+  }
+  input[type='text'] {
+    width: 220px;
+}
 }
 .main_ladder_btn {
   background: deepskyblue;
