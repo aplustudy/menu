@@ -36,7 +36,7 @@ def api_login():
             'email': email_receive,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(seconds=86400)
         }
-        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256').decode('utf8')
+        token = jwt.encode(payload, SECRET_KEY, algorithm='HS256')
 
         # token을 줍니다.
         return jsonify({'result': 'success', 'token': token})

@@ -107,16 +107,18 @@ let product = [
     
     setTimeout(() => {
       
-      const ran = Math.floor(Math.random() * product.length);
-  
-      const arc = 360 / product.length;
-      const rotate = (ran * arc) + 3600 + (arc * 3) - (arc/4);
-      
-      $c.style.transform = `rotate(-${rotate}deg)`;
-      $c.style.transition = `2s`;
-      
-      setTimeout(() => alert(`오늘의 메뉴는?! ${product[ran]} 어떠신가요?`), 2000);
-    }, 1);
-  };
+    const ran = Math.floor(Math.random() * product.length)
+    const arc = 360 / product.length
+    const rotate = (ran * arc) + 3600 + (90 + arc/2)
+    
+    console.log(ran, arc, rotate)
+    $c.style.transform = `rotate(-${rotate}deg)`;
+    $c.style.transition = `2s`;
+    setTimeout(() => {
+      alert(`오늘의 메뉴는?! ${product[ran]} 어떠신가요?`)
+    }
+      , 2000);
+  }, 1);
+};
   
   newMake();

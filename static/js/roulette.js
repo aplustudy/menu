@@ -84,8 +84,8 @@ const rotate = () => {
     const ran = Math.floor(Math.random() * product.length);
 
     const arc = 360 / product.length;
-    const rotate = (ran * arc) + 3600 + (arc * 3) - (arc/4);
-    
+    const rotate = (ran * arc) + 3600 + (90 + arc/2)
+    console.log(ran, arc, rotate)
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
     setTimeout(() => {
