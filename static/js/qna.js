@@ -14,8 +14,8 @@ $(document).ready(
             if (response['result'] == 'success') {
                 let user_id = response['name']
                 let user_email = response['email']
-                $("#user_id").text(`${user_id}님 문의사항을 남겨주세요!`)
-                $("#user_email").text(`Email : ${user_email}`)
+                $("#user_id").text(`${user_id}님, 문의사항을 남겨주세요! 순차 확인 후 아래 이메일로 답변드리도록 하겠습니다.`)
+                $("#user_email").text(`${user_email}`)
             } else {
                 console.log(response['msg'])
                 $("#user_id").text('로그인 해주세요!')
@@ -67,8 +67,17 @@ $(document).ready(
   }
 
   function posting() {
-      let email = $('#user_email').val()
+      let email = $('#user_email').html()
       let comment = $('#comment').val()
+
+    if (email == ""){
+        alert('로그인 후 이용해주세요.')
+        return false;
+    }
+    if ($('#comment').val() == ""){
+        alert('문의하실 내용을 입력해주세요.')
+        return false;
+    }
 
       $.ajax({
           type: 'POST',
