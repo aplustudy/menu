@@ -22,14 +22,38 @@ $(document).ready(
       }
   })
 });
-
 // 로그아웃 추가_토큰삭제
 function logout() {
   $.removeCookie('mytoken', {path: '/'});
 }
 
 const userId = ''
+let active1 = 'nav-link'
+let active2 = 'nav-link'
+let active3 = 'nav-link'
+let active4 = 'nav-link'
+let active5 = 'nav-link'
 
+let baseUrl = 'http://omecu.shop/'
+let nowUrl = window.location.href.substring(22) //baseUrl.length
+console.log(nowUrl)
+switch (nowUrl){
+    case '':
+      active1 = 'nav-link active'
+      break;
+    case 'roulette/':
+      active2 = 'nav-link active'
+      break;
+    case 'ladder/':
+      active3 = 'nav-link active'
+    break;
+    case 'test/':
+      active4 = 'nav-link active'
+    break;
+    case 'board/':
+      active5 = 'nav-link active'
+    break;
+}
 class NavBar extends HTMLElement {
 
     // 생성자 함수
@@ -105,19 +129,19 @@ class NavBar extends HTMLElement {
               <div class="offcanvas-body">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">메인화면</a>
+                    <a class="${active1}" href="/">메인화면</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/roulette">랜덤 룰렛</a>
+                    <a class="${active2}" href="/roulette">랜덤 룰렛</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/ladder">커스텀 룰렛</a>
+                    <a class="${active3}" href="/ladder">커스텀 룰렛</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/test">뭐먹지 월드컵</a>
+                    <a class="${active4}" href="/test">뭐먹지 월드컵</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/board">게시판</a>
+                    <a class="${active5}" href="/board">게시판</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

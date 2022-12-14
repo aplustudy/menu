@@ -1,3 +1,28 @@
+function Josa(txt, josa)
+{
+	var code = txt.charCodeAt(txt.length-1) - 44032;
+
+	// 원본 문구가 없을때는 빈 문자열 반환
+	if (txt.length == 0) return '';
+
+	// 한글이 아닐때
+	if (code < 0 || code > 11171) return txt;
+
+	if (code % 28 == 0) return txt + Josa.get(josa, false);
+	else return txt + Josa.get(josa, true);
+}
+Josa.get = function (josa, jong) {
+	// jong : true면 받침있음, false면 받침없음
+
+	if (josa == '을' || josa == '를') return (jong?'을':'를');
+	if (josa == '이' || josa == '가') return (jong?'이':'가');
+	if (josa == '은' || josa == '는') return (jong?'은':'는');
+	if (josa == '와' || josa == '과') return (jong?'와':'과');
+
+	// 알 수 없는 조사
+	return '**';
+}
+
 // 더블 클릭시 화면 확대를 막는 기능 -> 구글링으로 긁어온거라 그냥 그런 기능이구나
 // 생각하면 편합니다..ㅎㅎ document.body <- 여기에 이벤트 리스너(터치)로 터치가 다중으로
 // 클릭되면 마지막 터치는 씹는식으로 작동되는 코드입니다.
@@ -93,7 +118,9 @@ $('#C').click(function () {
 // 마지막 결과값을 뽑기 위해 Ajax 요청으로 db에 값을 가져오는 코드입니다.
 const menuAjax = (cate, menu) => {
     const foodList = [];
+    const randomFoodList = [];
     let b = []
+    let rf = ''
   $.ajax({
     type: 'GET', // Get은 데이터 요청 POST는 데이터 보내기
     url: '/food_db',
@@ -109,14 +136,18 @@ const menuAjax = (cate, menu) => {
         let condition = food[i].category === cate &&
                         (q1 == menu.q1) && (menu.q2 == -1 || q2 == -1 || q2 == menu.q2) && 
                         (menu.q3 == -1 || q3 == -1 || q3 == menu.q3) && (menu.q4 == -1 || q4 == -1 || q4 == menu.q4);
+        if (food[i].category === cate){
+          randomFoodList.push(food[i].name)
+        }
         if (condition){ 
           foodList.push(food[i].name) 
         };
       }
       b = [...foodList]
+      rf = randomFoodList[[Math.floor(Math.random() * randomFoodList.length)]]
     },
   });
-  return b
+  return [b, rf]
 };
 // 마지막 결과값을 보여주기 위해 input에 담긴 벨류들을 다 가져오는 로직입니다.
 const whatMenu = () => {
@@ -127,7 +158,7 @@ const whatMenu = () => {
     q3: $('#q3').val(),
     q4: $('#q4').val(),
   };
-    const result = menuAjax(menu, menu_choice);
+    const [result, rf] = menuAjax(menu, menu_choice)
     const resultOne = result[[Math.floor(Math.random() * result.length)]]
     if(resultOne){
         $("#result_menu").html(resultOne)
@@ -143,7 +174,8 @@ const whatMenu = () => {
 
     }
     else{
-        $("#result_menu").html("이런 메뉴는 없어요")
+      $("#result_menu").html(`이런 메뉴는 없어요... 하지만 ${Josa(rf,"은")} 어떠세요?`)
+      $("#all_menu_show").hide()
     }
     
     $('.loading').hide();
