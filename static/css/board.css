@@ -7,6 +7,11 @@
     }
 
 }
+
+img{
+    width: 250px;
+    height: 250px;
+}
 input[type='text'] {
     height: 32px;
     font-size: 15px;

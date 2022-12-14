@@ -158,9 +158,10 @@ article {
         color: black;
         background-color: pink;
         border: 0;
-        width: 100px;
+        width: 120px;
         margin: 20px auto;
         display: block;
+    
 }
 .menulust{
     display: flexbox;
@@ -170,6 +171,22 @@ article {
     color: white;
 }
 .btn-answer3:hover {
+    background-color: #fff;
+    border:#fff;
+    width: 288px;
+    margin: 0 auto;
+    font-size: 13px;
+    color: #1f1f1f;
+}
+.btn-answer:hover {
+    background-color: #fff;
+    border:#fff;
+    width: 288px;
+    margin: 0 auto;
+    font-size: 13px;
+    color: #1f1f1f;
+}
+.btn-answer:visited {
     background-color: #fff;
     border:#fff;
     width: 288px;
