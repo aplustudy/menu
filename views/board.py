@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, url_for, request, jsonify
 from views.models import Board, Comment
 from views.forms import BoardForm
-from datetime import datetime
+from datetime import datetime, timedelta
 from app import db 
 from werkzeug.utils import redirect, secure_filename
 from pymongo import MongoClient
@@ -58,14 +58,14 @@ def detail(board_index):
         userinfo = mongodb.user.find_one({'email': payload['email']}, {'_id': 0})
         user_email = userinfo['email']
     except:
-        user_email = userinfo['익명']
+        user_email = ''
     # email 획득
     return render_template('/board_detail.html', board = board, form = form, user_email = user_email)
 
 @bp.route("/create/", methods = ["GET", "POST"]) 		
 def create():	
     form = BoardForm()
-    today = datetime.now()
+    today = datetime.now()+timedelta(hours=9)
     if request.method == "POST" and form.validate_on_submit():
         file = request.files[form.file_upload.name]
         extension = file.filename.split('.')[-1]
@@ -105,7 +105,7 @@ def modify(board_index):
             #파일
             file = request.files[form.file_upload.name]
             extension = file.filename.split('.')[-1]
-            today = datetime.now()
+            today = datetime.now()+timedelta(hours=9)
             print(q.file_name)
             if extension in ['png', 'jpg', 'bmp', 'gif', 'webp']:
                 file_name = today.strftime('%Y-%m-%d-%H-%M-%S-%f')
