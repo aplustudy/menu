@@ -14,7 +14,7 @@ $(document).ready(
             if (response['result'] == 'success') {
                 let user_id = response['name']
                 let user_email = response['email']
-                $("#user_id").text(`${user_id}님, 문의사항을 남겨주세요! 순차 확인 후 아래 이메일로 답변드리도록 하겠습니다.`)
+                $("#user_id").text(`${user_id}님, 문의사항을 남겨주세요!`)
                 $("#user_email").text(`${user_email}`)
             } else {
                 $("#user_id").text('로그인 해주세요!')

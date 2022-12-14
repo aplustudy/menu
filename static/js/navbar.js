@@ -114,7 +114,7 @@ class NavBar extends HTMLElement {
                     <a class="nav-link" href="/ladder">커스텀 룰렛</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/test">메뉴 추천</a>
+                    <a class="nav-link" href="/test">뭐먹지 월드컵</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/board">게시판</a>

@@ -7,6 +7,10 @@
     }
 
 }
+
+img{
+    width: 100%;
+}
 input[type='text'] {
     height: 32px;
     font-size: 15px;

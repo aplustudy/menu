@@ -2,6 +2,21 @@ input:focus {
   outline: none;
 }
 
+@media (max-width:500px) {
+  #rlc{
+    width: 300px;
+    height: 300px;
+  }
+}
+.btn{
+  color: black;
+        background-color: pink;
+        border: 0;
+}
+.btn:hover{
+  background-color: deeppink;
+  color: white;
+}
 input[type='text'] {
   width: 300px;
   height: 32px;
@@ -30,11 +45,21 @@ input[type='text'] {
 }
 .ladder {
   max-height: 600px;
-  width: 400px;
+  width: 95%;
   min-height: 200px;
+  max-width: 400px;
   margin: 10px auto;
   border: 2px solid black;
   border-radius: 20px;
+}
+@media (max-width:500px){
+  .ladder {
+    width: 300px;
+    
+  }
+  input[type='text'] {
+    width: 220px;
+}
 }
 .main_ladder_btn {
   background: deepskyblue;
