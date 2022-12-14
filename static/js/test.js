@@ -170,3 +170,40 @@ function next() {
 const allmenu = () => {
   $('.loading').toggle();
 }
+Kakao.init('ce746e4fd5d56bc3cadac185fc799d08');
+function kakaoShare() {
+  Kakao.Link.sendDefault({
+    objectType: 'feed',
+    content: {
+      title: '뭐먹지 월드컵',
+      description: '오늘 메뉴 뭐먹지.. 고민되시나요?',
+      imageUrl:
+        'http://omecu.shop/static/images/test.png',
+      link: {
+        mobileWebUrl: 'http://omecu.shop',
+        webUrl: 'http://omecu.shop',
+      },
+    },
+    buttons: [
+      {
+        title: '테스트 하기',
+        link: {
+          mobileWebUrl: 'http://omecu.shop',
+          webUrl: 'http://omecu.shop',
+        },
+      },
+    ],
+  });
+}
+
+function clip(){
+        
+  var url = 'http://omecu.shop';
+  var textarea = document.createElement("textarea");
+  document.body.appendChild(textarea);
+  textarea.value = url;
+  textarea.select();
+  document.execCommand("copy");
+  document.body.removeChild(textarea);
+  alert("복사 완료!")
+}
