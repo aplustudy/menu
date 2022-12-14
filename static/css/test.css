@@ -186,6 +186,10 @@ article {
     font-size: 13px;
     color: #1f1f1f;
 }
+.copyclass{
+    display: flex;
+    margin: 0 auto;
+}
 .btn-answer:visited {
     background-color: #fff;
     border:#fff;

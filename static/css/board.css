@@ -9,8 +9,7 @@
 }
 
 img{
-    width: 250px;
-    height: 250px;
+    width: 100%;
 }
 input[type='text'] {
     height: 32px;
