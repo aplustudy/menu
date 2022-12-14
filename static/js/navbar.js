@@ -25,7 +25,6 @@ $(document).ready(
 
 // 로그아웃 추가_토큰삭제
 function logout() {
-  console.log('logout!')
   $.removeCookie('mytoken', {path: '/'});
 }
 
@@ -76,7 +75,7 @@ class NavBar extends HTMLElement {
 
     disconnectedCallback() {
 
-        console.log('div-header element removed.');
+        // console.log('div-header element removed.');
 
     }
 

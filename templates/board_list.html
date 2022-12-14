@@ -93,7 +93,7 @@
                                 {% endif %}
                             {% endif %}</td> 
                         <td>
-                            <a href="{{ url_for('board.detail', board_index=board.index) }}">{{ board.title }}</a>    
+                            <a href="{{ url_for('board.detail', board_index=board.index, page=page, kw=kw, tab=tab) }}">{{ board.title }}</a>    
                             {% if board.comment_set|length > 0 %}
                             <span class="text-secondary small mx-2">[{{ board.comment_set|length }}]</span>
                             {% endif %}
@@ -178,7 +178,7 @@
     </form>
 
     <!-- 홈으로 버튼 -->
-    <a href="{{ url_for('main') }}" class="btn btn-secondary">홈으로</a>
+    <a href="{{ url_for('board._list') }}" class="btn btn-secondary">게시판 홈으로</a>
 </div>
 <script src="/static/js/board.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" 

@@ -23,7 +23,6 @@ function change_pw() {
             pw2_give: $('#password2').val(),
         },
         success: function (response) {
-            console.log(response)
             if (response['result'] == 'success') {
                 // 로그인에 성공하면 token을 쿠키에 저장!!!!
                 $.cookie('mytoken', response['token']);

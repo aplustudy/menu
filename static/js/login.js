@@ -7,7 +7,6 @@ function loginCall() {
             password_give: $('#password').val(),
         },
         success: function (response) {
-            console.log(response)
             if (response['result'] == 'success') {
                 // 로그인에 성공하면 token을 쿠키에 저장!!!!
                 $.cookie('mytoken', response['token'], {path: '/'});

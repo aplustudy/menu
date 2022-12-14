@@ -60,7 +60,31 @@ def detail(board_index):
     except:
         user_email = '익명'
     # email 획득
-    return render_template('/board_detail.html', board = board, form = form, user_email = user_email)
+    # board_list
+    page = request.args.get('page', type=int, default=1) 
+    kw = request.args.get('kw', type=str, default='')
+    tab = request.args.get('tab', type=str, default='')
+    board_list = Board.query.order_by(Board.datetime.desc()) 
+    if tab:
+        search = '%%{}%%'.format(tab)
+        board_list = board_list.filter(Board.tab.like(search)).distinct()
+    if kw:
+        search = '%%{}%%'.format(kw)
+        sub_query = db.session.query(Comment.post_index, Comment.content, Comment.user).subquery()
+        board_list = board_list \
+            .outerjoin(sub_query, sub_query.c.post_index == Board.index) \
+            .filter(Board.title.ilike(search) |  # 질문제목
+                    Board.content.ilike(search) |  # 질문내용
+                    Board.user.ilike(search) |  # 질문작성자
+                    Board.user_email.ilike(search)  | # 질문작성자 이메일
+                    sub_query.c.content.ilike(search) |  # 답변내용
+                    sub_query.c.user.ilike(search)   # 답변작성자
+                    ) \
+            .distinct()
+    board_list = board_list.paginate(page=page, per_page=10)
+    # board_list
+    return render_template('/board_detail.html', board = board, form = form, user_email = user_email,
+    board_list = board_list, page=page, kw=kw, tab=tab)
 
 @bp.route("/create/", methods = ["GET", "POST"]) 		
 def create():	

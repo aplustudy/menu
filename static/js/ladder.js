@@ -1,6 +1,28 @@
+console.log($.cookie('ladder') ? $.cookie('ladder').split(',') : 'no cookie!')
+
+$(document).ready(
+  function () {
+    if ($.cookie('ladder')){
+      let cookieSplit = $.cookie('ladder').split(',')
+      for(let i = 0; i < cookieSplit.length; i++){
+        const box = document.getElementById("ladder");
+        const newP = document.createElement('div');
+        newP.classList.add('p_tag')
+        const foodValue = cookieSplit[i]
+        if(foodValue !== ""){
+            newP.innerHTML = "<p class='ladder_p_tag'>" + foodValue + "</p><input id='"+foodValue+"' type='button' class='ladder_btn' value='삭제' onclick='remove(this)'>";
+            box.appendChild(newP);
+            fooddata.push(foodValue);
+            parent.document.getElementById('want_food').value='';
+        }
+      }
+    }
+  }
+);
+
 const $c = document.querySelector("canvas");
 const ctx = $c.getContext(`2d`);
-const fooddata = []
+let fooddata = []
 
 const randomValue = (array) => {
     if(array.length === 0){
@@ -13,10 +35,15 @@ const randomValue = (array) => {
 }
 
 const makeRl = () => {
+  console.log(fooddata)
+  if (fooddata.length !== 0){
     product = [...fooddata]
     newMake()
     $("#ladder_main").toggle()
     $("#makeRl").toggle()
+  }else{
+    alert('리스트에 메뉴가 없어요!')
+  }
 }
 
 $("#want_food").keyup(function(event) {
@@ -29,12 +56,12 @@ const addTextbox = () => {
     const newP = document.createElement('div');
     newP.classList.add('p_tag')
     const foodValue = document.getElementById('want_food').value
-    if(foodValue === ""){
-    }
-    else {
+    if(foodValue !== ""){
         newP.innerHTML = "<p class='ladder_p_tag'>" + foodValue + "</p><input id='"+foodValue+"' type='button' class='ladder_btn' value='삭제' onclick='remove(this)'>";
         box.appendChild(newP);
         fooddata.push(foodValue);
+        console.log(fooddata)
+        $.cookie('ladder', fooddata, { expires: 36500, path: '/' });
         parent.document.getElementById('want_food').value='';
     }
 }
@@ -43,9 +70,20 @@ const remove = (obj) => {
     for(let i = 0; i < fooddata.length; i++){
       if(fooddata[i] === obj.id){
         fooddata.splice(i, 1);
+        $.cookie('ladder', fooddata, { expires: 36500, path: '/' });
+        console.log(fooddata)
         return
       }
     }
+}
+
+const remove_all = (obj) => {
+  if (confirm("정말 초기화 하시겠습니까?") === true){
+    document.getElementById('ladder').replaceChildren();
+    fooddata = []
+    console.log(fooddata)
+    $.cookie('ladder', fooddata, { expires: 36500, path: '/' });
+  }
 }
 
 const randomFood = () => {
@@ -111,7 +149,6 @@ let product = [
     const arc = 360 / product.length
     const rotate = (ran * arc) + 3600 + (90 + arc/2)
     
-    console.log(ran, arc, rotate)
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
     setTimeout(() => {

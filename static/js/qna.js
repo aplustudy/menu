@@ -17,7 +17,6 @@ $(document).ready(
                 $("#user_id").text(`${user_id}님, 문의사항을 남겨주세요! 순차 확인 후 아래 이메일로 답변드리도록 하겠습니다.`)
                 $("#user_email").text(`${user_email}`)
             } else {
-                console.log(response['msg'])
                 $("#user_id").text('로그인 해주세요!')
                 $("#user_email").text('로그인 해주세요!')
             }

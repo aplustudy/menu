@@ -18,7 +18,7 @@ let num = 1;
 // 배열 + 객체는 q[0].title <- 이런식으로 사용
 const q = {
   1: {
-    title: '면 or 밥 당신의 선택은?? ( 빵은 햄버거 드세요 )',
+    title: '면 or 밥 당신의 선택은??',
     type: 'q1',
     A: '밥',
     B: '면',
@@ -104,7 +104,6 @@ const menuAjax = (cate, menu) => {
     // 말그대로 화면이 멈춰버리는 불상사가 생기는걸 막기위해서 이런식으로 코드를 작성합니다.
     success: function (response) {
       const food = response['foods'];
-      console.log(menu);
       for (let i = 0; i < food.length; i++) {
         let [q1, q2, q3, q4] = [food[i].q1, food[i].q2, food[i].q3, food[i].q4];
         let condition = food[i].category === cate &&
@@ -133,7 +132,6 @@ const whatMenu = () => {
     if(resultOne){
         $("#result_menu").html(resultOne)
         $(".menulist").html(result)
-        console.log(result);
     }
     else{
         $("#result_menu").html("이런 메뉴는 없어요")

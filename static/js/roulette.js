@@ -15,7 +15,6 @@ const foodSelect = (selected) => {
             foodList.push(food[i].name)
           }
         }
-        console.log(foodList);
         product.splice(0)
         const foods_len = (selected === "한식" || selected === "랜덤" ? 9 : 6)
         const foods = []
@@ -27,7 +26,6 @@ const foodSelect = (selected) => {
             break;
           }
         }
-        console.log(foods);
         newMake();
        }})
 }
@@ -86,7 +84,6 @@ const rotate = () => {
 
     const arc = 360 / product.length;
     const rotate = (ran * arc) + 3600 + (90 + arc/2)
-    console.log(ran, arc, rotate)
     $c.style.transform = `rotate(-${rotate}deg)`;
     $c.style.transition = `2s`;
     setTimeout(() => {
