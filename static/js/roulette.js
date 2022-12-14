@@ -17,16 +17,17 @@ const foodSelect = (selected) => {
         }
         console.log(foodList);
         product.splice(0)
-        const food9 = []
-        for(let i = 0; food9.length < 9; i++){
+        const foods_len = (selected === "한식" || selected === "랜덤" ? 9 : 6)
+        const foods = []
+        for(let i = 0; foods.length < foods_len; i++){
             let a = foodList[Math.floor(Math.random() * foodList.length)]
-            food9.includes(a) ? undefined : food9.push(a)
-          if(food9.length === 9){
-            product = [...food9]
+            foods.includes(a) ? undefined : foods.push(a)
+          if(foods.length === foods_len){
+            product = [...foods]
             break;
           }
         }
-        console.log(food9);
+        console.log(foods);
         newMake();
        }})
 }
